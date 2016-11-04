@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1478167239 source:c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\main.c
+	<stdio.h>
+	<stdlib.h>
+	"matrici.h"
+	"array.h"
+
+1478164489 c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\matrici.h
+
+1478164837 source:c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\matrici.c
+	<stdio.h>
+	<stdlib.h>
+	"matrici.h"
+
+1478168204 source:c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\array.c
+	<stdio.h>
+	<stdlib.h>
+	"array.h"
+
+1478168204 c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\array.h
+
