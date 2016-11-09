@@ -3,51 +3,39 @@
 #include <string.h>
 #include "stringhe.h"
 
-char* creaStringa(){
+/** MODI PER CREARE STRINGHE
     char s[100];
-/*  char str[]="Questa e' una Prova"; --> CORRETTO
-    ---------------------------------------------
+    printf("Inserisci una stringa qualsiasi:\n");
+    scanf("%s",s);
+    -------------------------------------
+    char str[]="Questa e' una Prova";
+    -------------------------------------
+    stringa s=(stringa)malloc(sizeof(char));
+    printf("Inserisci una stringa qualsiasi:\n");
+    scanf("%s",s);
+    -------------------------------------
+    stringa s=(stringa)calloc(4,sizeof(char));
+    s="ciao";
+    -------------------------------------
     char str[100];
     str="Questa e' una Prova";  --> SBAGLIATO
 */
-    stringa str;
+
+char* creaStringa(){
+    stringa s=(stringa)malloc(sizeof(char));
     printf("Inserisci una stringa qualsiasi:\n");
     scanf("%s",s);
-    str=s;
-    return str;
-}
-
-char* creaStringaDin(){
-    stringa s;
-    s=(stringa)malloc(sizeof(char));
-    printf("Inserisci una stringa qualsiasi:\n");
-    scanf("%s",s);
-    return s;
-}
-
-char* creaStringaDim(int dim){
-    stringa s;
-    s=(stringa)calloc(dim,sizeof(char));
-    s="ciao";
     return s;
 }
 
 void stampaStringa(stringa s){
-    int i;
-    int len;
-    len=strlen(s);
-    printf("\nlunghezza stringa: %d",len);
-    printf("\nStringa creata:\n");
-    for(i=0;i<len;i++){
-        printf("%c",s[i]);
-    }
-
+    printf("%s\n",s);
 }
 
 char* copiaStringa(stringa ss){
     stringa sd;
     sd=(stringa)malloc(sizeof(char));
-    sd=strcpy(sd,ss);
+    return strcpy(sd,ss);
     return sd;
 }
 
@@ -55,19 +43,27 @@ int confrontaStringhe(stringa s1,stringa s2){
     return strcmp(s1,s2);
 }
 
+char* concatenaStringhe(stringa s1, stringa s2){
+    printf("%s\n%s",s1,s2);
+    return strcat(s1,s2);
+    //printf("risultato= %s\n",s1);
+}
+
 void stringhe(){
-    int dim=4;
     int cmp;
-    stringa str1;
-    str1=creaStringaDim(dim);
-    //stampaStringa(str1);
-    stringa strd;
-    strd=(stringa)malloc(sizeof(char));
-    strd=copiaStringa(str1);
-    printf("\nstringa %s copiata. risultato= %s\n",str1,strd);
-    cmp=confrontaStringhe(str1,strd);
+    stringa str1,str2;
+    str1=creaStringa();
+    str2=creaStringa();
+    stampaStringa(str1);
+    str2=copiaStringa(str1);
+    printf("\nstringa %s copiata. risultato= %s\n",str1,str2);
+    cmp=confrontaStringhe(str1,str2);
     if(cmp==0)
         printf("le stringhe sono uguali\n");
     else
         printf("le stringhe sono diverse\n");
+    stringa strcon;
+    strcon=(stringa)malloc(sizeof(char));
+    strcon=concatenaStringhe(str1,str2);
+    printf("\nstringa risultante = %s",strcon);
 }
