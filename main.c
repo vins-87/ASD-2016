@@ -16,6 +16,8 @@ int main()
                 break;
         case 2: stringhe();
                 break;
+        case 3: strutture();
+                break;
         default: return 0;
     }
 

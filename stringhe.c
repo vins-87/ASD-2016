@@ -36,7 +36,6 @@ char* copiaStringa(stringa ss){
     stringa sd;
     sd=(stringa)malloc(sizeof(char));
     return strcpy(sd,ss);
-    return sd;
 }
 
 int confrontaStringhe(stringa s1,stringa s2){
@@ -44,9 +43,7 @@ int confrontaStringhe(stringa s1,stringa s2){
 }
 
 char* concatenaStringhe(stringa s1, stringa s2){
-    printf("%s\n%s",s1,s2);
     return strcat(s1,s2);
-    //printf("risultato= %s\n",s1);
 }
 
 void stringhe(){
@@ -62,8 +59,6 @@ void stringhe(){
         printf("le stringhe sono uguali\n");
     else
         printf("le stringhe sono diverse\n");
-    stringa strcon;
-    strcon=(stringa)malloc(sizeof(char));
-    strcon=concatenaStringhe(str1,str2);
-    printf("\nstringa risultante = %s",strcon);
+    str2=concatenaStringhe(str1,str2);
+    printf("\nstringa risultante = %s",str2);
 }
