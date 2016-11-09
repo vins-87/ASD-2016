@@ -31,9 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="array.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="matrici.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="matrici.h" />
+		<Unit filename="stringhe.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="stringhe.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

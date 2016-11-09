@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "matrici.h"
 #include "array.h"
+#include "stringhe.h"
 
 int main()
 {
@@ -12,6 +13,8 @@ int main()
         case 0: vet();
                 break;
         case 1: matrice();
+                break;
+        case 2: stringhe();
                 break;
         default: return 0;
     }
