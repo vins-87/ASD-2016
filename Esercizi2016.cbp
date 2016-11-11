@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="stringhe.h" />
+		<Unit filename="strutture.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="strutture.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

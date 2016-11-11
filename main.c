@@ -3,6 +3,7 @@
 #include "matrici.h"
 #include "array.h"
 #include "stringhe.h"
+#include "strutture.h"
 
 int main()
 {
@@ -18,7 +19,8 @@ int main()
                 break;
         case 3: strutture();
                 break;
-        default: return 0;
+        default: printf("esci");
+                break;
     }
 
     return 0;
