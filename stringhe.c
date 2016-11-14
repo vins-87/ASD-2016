@@ -23,7 +23,6 @@
 
 void leggiStringaArray(char s[]){
     int i;
-
     printf("Inserire %d caratteri!\n",N);
 
     for(i=0;i<N-1;i++){
@@ -33,10 +32,10 @@ void leggiStringaArray(char s[]){
 }
 
 char* creaStringa(){
-    stringa s=(stringa)malloc(sizeof(char));
+    stringa st=(stringa)malloc(100*sizeof(char));
     printf("Inserisci una stringa qualsiasi:\n");
-    scanf("%s",s);
-    return s;
+    scanf("%s",st);
+    return st;
 }
 
 void stampaStringaArray(char s[]){
@@ -49,20 +48,6 @@ void stampaStringaArray(char s[]){
 
 void stampaStringaPuntatore(stringa s){
     printf("%s\n",s);
-}
-
-char* copiaStringa(stringa ss){
-    stringa sd;
-    sd=(stringa)malloc(sizeof(char));
-    return strcpy(sd,ss);
-}
-
-int confrontaStringhe(stringa s1,stringa s2){
-    return strcmp(s1,s2);
-}
-
-char* concatenaStringhe(stringa s1, stringa s2){
-    return strcat(s1,s2);
 }
 
 Container letteraPiuRicorrente(char s[]){
@@ -99,29 +84,29 @@ Container letteraPiuRicorrente(char s[]){
 }
 
 void stringheVins(){
-    int cmp;
+    int cmp=0;
     stringa str1,str2;
     str1=creaStringa();
     str2=creaStringa();
-    stampaStringa(str1);
-    str2=copiaStringa(str1);
+    strcpy(str1,str2);
     printf("\nstringa %s copiata. risultato= %s\n",str1,str2);
-    cmp=confrontaStringhe(str1,str2);
+    cmp=strcmp(str1,str2);
     if(cmp==0)
         printf("le stringhe sono uguali\n");
     else
         printf("le stringhe sono diverse\n");
-    str2=concatenaStringhe(str1,str2);
-    printf("\nstringa risultante = %s",str2);
-
+    strcat(str1,str2);
+    printf("\nstringa risultante = %s",str1);
+    free(str1);
+    free(str2);
 }
 
 void stringheVale(){
     char s[N];
     Container c;
 
-    leggiStringa(s);
-    stampaStringa(s);
+    leggiStringaArray(s);
+    stampaStringaArray(s);
 
     c = letteraPiuRicorrente(s);
 
@@ -130,10 +115,10 @@ void stringheVale(){
 }
 
 void stringhe(){
-    int n;
+    int m=0;
     printf("VALE(1) O VINS(2)?\n");
-    scanf("%d",&n);
-    if(n==1)
+    scanf("%d",&m);
+    if(m==1)
         stringheVale();
     else
         stringheVins();

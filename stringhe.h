@@ -6,6 +6,7 @@ typedef struct{     // Struttura dati
     char cOcc;      // Carattere piu ricorrente
     int numOcc;     // Numero di volte che questo carattere compare nella sequqnza
 }Container;
+#define N 5
 #endif // STRINGHE_H
 
 void leggiStringaArray(char s[]);
