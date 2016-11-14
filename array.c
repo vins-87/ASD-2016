@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "array.h"
 
+//CREA ARRAY DA INPUT E RITORNA IL PUNTATORE AD ESSA
 int* creaArray(int dim){
     int *v;
     int i;
