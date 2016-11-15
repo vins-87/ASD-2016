@@ -37,7 +37,7 @@
 1478876645 source:c:\users\vins87\google drive\universitylocale\asd\programmazione\2016-2017\esercizi2016\strutture.c
 	"strutture.h"
 
-1479118014 source:c:\users\m. valerio falcone\github\array.c
+1479208550 source:c:\users\m. valerio falcone\github\array.c
 	<stdio.h>
 	<stdlib.h>
 	"array.h"
@@ -61,12 +61,12 @@
 	<stdlib.h>
 	"stringhe.h"
 
-1479118014 source:c:\users\m. valerio falcone\github\matrici.c
+1479208550 source:c:\users\m. valerio falcone\github\matrici.c
 	<stdio.h>
 	<stdlib.h>
 	"matrici.h"
 
-1479122110 source:c:\users\m. valerio falcone\github\stringhe.c
+1479215929 source:c:\users\m. valerio falcone\github\stringhe.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
