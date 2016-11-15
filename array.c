@@ -69,15 +69,15 @@ void sort(int *a){
     int posmin;
     int min;
 
-    for(i=0;*(a+i)<N;i++){       //Per ogni elemento a[i] del vettore
+    for(i=0;a[i]<N;i++){       //Per ogni elemento a[i] del vettore
         posmin=i;
-        min=*(a+i);
+        min=a[i];
 
-        for(j=i+1;*(a+j)<N;j++){ //Per ogni elemento della parte successiva a a[i] del vettore
+        for(j=i+1;a[j]<N;j++){ //Per ogni elemento della parte successiva a a[i] del vettore
 
-            if(min>*(a+j)){   //Condizione di minimo
+            if(min>a[j]){   //Condizione di minimo
                 posmin=j;
-                min=*(a+j);
+                min=a[j];
             }
 
         }
