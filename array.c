@@ -45,7 +45,7 @@ void pariDispari(int *a, int dim){
         if(np<nd)
             printf("ci sono piu numeri dispari che pari\n");
         else
-            printf("c'è la stessa quantità di numeri pari e dispari\n");
+            printf("c'e la stessa quantita di numeri pari e dispari\n");
     }
 }
 
