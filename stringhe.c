@@ -26,8 +26,8 @@ void leggiStringaArray(char s[]){
     int i;
     printf("Inserire %d caratteri!\n",N);
 
-    for(i=0;i<N-1;i++){
-        scanf("%c", &s[i]);
+    for(i=0;i<N;i++){
+        scanf("%s",&s[i]);
     }
 
 }
@@ -46,6 +46,7 @@ void stampaStringaArray(char s[]){
     printf("La stringa inserita e':\n");
     for(i=0;s[i]!='\0';i++)
         printf("%c",s[i]);
+    printf("\n");
 }
 
 //STAMPA STRINGA PASSANDO IL SUO PUNTATORE
@@ -53,11 +54,20 @@ void stampaStringaPuntatore(stringa s){
     printf("%s\n",s);
 }
 
+int numeroDiOccorrenze(char s[], char c){
+    int result = 0;
+    int i;
+
+    for(i=0; s[i]!='\0' ;i++)     // Per ogni elemento nella parte successiva del vettore
+        if(s[i]==c)     //Se il carattere che ho preso in esame e' uguale a uno degli elementi del resto del vettore
+            result++;
+    return result;
+}
+
 Container letteraPiuRicorrente(char s[]){
     Container result;   // Struttura dati
 
-    int i;              // Contatori
-    int j;
+    int i;              // Contatore
 
     char caratterePiuRicorrente;
     int numeroOccorrenze;
@@ -65,26 +75,30 @@ Container letteraPiuRicorrente(char s[]){
     numeroOccorrenze=1;             // Inizializzazione variabili
     caratterePiuRicorrente = s[0];
 
+    stampaStringaArray(s);
+
     int temp;      // Variabile temporanea per salvare il numero di ricorrenze di una lettera in un array
 
     for(i=0;s[i]!='\0';i++){           //Per ogni elemento del vettore
-        temp=1;
+        temp = numeroDiOccorrenze(s, s[i]);
 
-        for(j=i+1;s[j]!='\0';j++)     // Per ogni elemento nella parte successiva del vettore
-            if(s[i]==s[j])     //Se il carattere che ho preso in esame e' uguale a uno degli elementi del resto del vettore
-                temp++;
-
-        if(temp>numeroOccorrenze){
+        if(temp > numeroOccorrenze){
             caratterePiuRicorrente = s[i];
             numeroOccorrenze = temp;
         }
     }
-
+/*
+    nric=numeroDiOccorrenze(s,s[i]);
+    if(nric>numeroOccorrenze){
+        numeroOccorrenze=nric;
+    }
+*/
     result.cOcc=caratterePiuRicorrente;
     result.numOcc=numeroOccorrenze;
 
     return result;
 }
+
 
 void stringheVins(){
     int cmp=0;
