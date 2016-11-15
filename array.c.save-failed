@@ -30,22 +30,21 @@ int maxElemArray(int *v, int dim){
 */
 void pariDispari(int *a, int dim){
     int i;
-    int np=0;
-    int nd=0;
+    int np;
+    int nd;
     for(i=0;i<dim;i++){
-        printf("%d ",a[i]);
         if(a[i]%2==0)
             np++;
         else
             nd++;
     }
     if(np>nd)
-        printf("ci sono piu numeri pari che dispari\n");
+        printf("ci sono più numeri pari che dispari\n");
     else{
         if(np<nd)
-            printf("ci sono piu numeri dispari che pari\n");
+            printf("ci sono più numeri dispari che pari\n");
         else
-            printf("c'e la stessa quantita di numeri pari e dispari\n");
+            printf("c'è la stessa quantità di numeri pari e dispari\n");
     }
 }
 

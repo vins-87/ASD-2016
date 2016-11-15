@@ -21,6 +21,7 @@
     str="Questa e' una Prova";  --> SBAGLIATO
 */
 
+
 void leggiStringaArray(char s[]){
     int i;
     printf("Inserire %d caratteri!\n",N);
@@ -31,6 +32,7 @@ void leggiStringaArray(char s[]){
 
 }
 
+//CREA STRINGA DI DIMENSIONE 100 E RITORNA IL PUNTATORE AD ESSA
 char* creaStringa(){
     stringa st=(stringa)malloc(100*sizeof(char));
     printf("Inserisci una stringa qualsiasi:\n");
@@ -46,6 +48,7 @@ void stampaStringaArray(char s[]){
         printf("%c",s[i]);
 }
 
+//STAMPA STRINGA PASSANDO IL SUO PUNTATORE
 void stampaStringaPuntatore(stringa s){
     printf("%s\n",s);
 }

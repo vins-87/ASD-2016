@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "matrici.h"
 
+//CREA E RIEMPI MATRICE PASSANDOGLI LE SUE DIMENSIONI
 int** creaMatricePiena(int r, int c){
     int **A;
     int i;
@@ -15,6 +16,7 @@ int** creaMatricePiena(int r, int c){
     return A;
 }
 
+//CREA MATRICE RIEMPIENDOLA DA INPUT PASSANDOGLI LE SUE DIMENSIONI
 int** creaMatriceDaInput(int r, int c){
     int** A;
     int i,j;
