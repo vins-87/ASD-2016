@@ -49,12 +49,41 @@ void pariDispari(int *a, int dim){
     }
 }
 
+//  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
+void potenza(int num, int pot){
+    int ris=1;
+    int i;
+    for(i=0;i<pot;i++){
+        ris=ris*num;
+    }
+    printf("%d elevato a %d = %d\n",num,pot,ris);
+}
+
+/*  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
+    Questa volta però utilizzando una funzione ricorsiva.
+*/
+int potenzaRicorsiva(int num, int pot){
+    if(pot==1)
+        return num;
+    else{
+        num=num*potenzaRicorsiva(num,pot-1);
+    }
+    return num;
+}
+
 void vet(){
     int *v;
     int dim=10;
     int max;
     v=creaArray(dim);
     max=maxElemArray(v,dim);
-    printf("massimo elemento dell'array = %d\n",max);
+    printf("\nmassimo elemento dell'array = %d\n",max);
     pariDispari(v,dim);
+    potenza(3,2);
+    int ris;
+    int n1,n2;
+    n1=3;
+    n2=4;
+    ris=potenzaRicorsiva(n1,n2);
+    printf("\npotenza ricorsiva di %d elevato a %d = %d\n",n1,n2,ris);
 }
