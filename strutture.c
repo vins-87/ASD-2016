@@ -19,11 +19,12 @@ persona* creaPersona(){
 }
 
 
-/*  Legge una sequenza di punti*/
-void leggiPunto(Punto a[]){
+/*  Legge una sequenza di punti di dimensione dim*/
+
+void leggiPunti(Punto a[], int dim){
     int i;
 
-    for(i=0;i<N;i++){
+    for(i=0;i<dim;i++){
         printf("(%d)X: ",i+1);
         scanf("%f", &a[i].x);
         printf("(%d)Y: ",i+1);
@@ -31,15 +32,17 @@ void leggiPunto(Punto a[]){
     }
 }
 
-void stampaPunto(Punto a[]){
+/* Stampa la sequenza di punti di dimensione dim */
+void stampaPunti(Punto a[], int dim){
     int i;
 
-    for(i=0;i<N;i++){
+    for(i=0;i<dim;i++){
         printf("(%d) (%f",i+1, a[i].x);
         printf(",%f)\n", a[i].y);
     }
 }
 
+/* Restituisce il punto medio tra i due passati per parametro */
 Punto puntoMedio(Punto a, Punto b){
     Punto result;
 
@@ -49,22 +52,26 @@ Punto puntoMedio(Punto a, Punto b){
     return result;
 }
 
+
+/* Restituisce la distanza tra i due punti passati per parametro (teorema di Pitagora) */
 float calcolaDistanza(Punto a, Punto b){
     float result;
     float deltaX;
     float deltaY;
 
+    /* Calcolo della distanza sull'asse delle ascisse se xA>xB*/
     if(a.x>b.x)
         deltaX=a.x-b.x;
     else
         deltaX=b.x-a.x;
 
+    /* Calcolo della distanza sull'asse delle ascisse se yA>yB*/
     if(a.y>b.y)
         deltaY=a.y-b.y;
     else
         deltaY=b.y-a.y;
 
-    result = sqrt(deltaX*deltaX + deltaY*deltaY);
+    result = sqrt(deltaX*deltaX + deltaY*deltaY);   // Teroema di Pitagora
 
     return result;
 }
@@ -74,4 +81,13 @@ void strutture(){
     p1=creaPersona();
     printf("nome: %s\ncognome: %s\nanni: %d",p1->nome,p1->cognome,p1->anni);
     free(p1);
+
+    Punto p[H];
+    printf("\nInserisci le coordinate di %d punti.",H);
+    leggiPunti(p,H);
+    stampaPunti(p,H);
+    Punto medio = puntoMedio(p[0],p[1]);
+    printf("Il punto medio tra i primi due punti inseriti e' di coordinate (%f,%f)",medio.x,medio.y);
+    float dist = calcolaDistanza(p[0],p[1]);
+    printf("La distanza misurata tra i primi due punti e' %f", dist);
 }
