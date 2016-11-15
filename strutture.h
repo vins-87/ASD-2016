@@ -11,6 +11,10 @@ typedef struct{
     int anni;
 }persona;
 
+typedef struct{
+    float x;
+    float y;
+}Punto;
 
 #endif // STRUTTURE_H
 

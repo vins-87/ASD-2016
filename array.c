@@ -6,10 +6,10 @@ Tutti i metodi sono in ordine di utilizzo nella funzione vet(), così come sono n
 #include <stdlib.h>
 #include "array.h"
 
-int N = 10;     // Dimensione array (il #define non mi funzionava..
+    // Dimensione array (il #define non mi funzionava..
 
 //CREA ARRAY DA INPUT E RITORNA IL PUNTATORE AD ESSA
-int* creaArray(int N){
+int* creaArray(int dim){
     int *v;
     int i;
     v=(int*)calloc(N,sizeof(int));
@@ -19,11 +19,11 @@ int* creaArray(int N){
     return v;
 }
 
-int maxElemArray(int *v, int N){
+int maxElemArray(int *v, int dim){
     int i;
     int max;
     max=v[0];
-    for(i=0;i<N;i++){
+    for(i=0;i<dim;i++){
         if(v[i]>max)
             max=v[i];
     }
@@ -34,7 +34,7 @@ int maxElemArray(int *v, int N){
     Il numero di valori pari (e quindi anche di valori dispari)
     Quale dei due numeri sia maggiore (messaggio su video)
 */
-void pariDispari(int *a, int N){
+void pariDispari(int *a, int dim){
     int i;
     int np=0;
     int nd=0;
@@ -55,7 +55,7 @@ void pariDispari(int *a, int N){
     }
 }
 
-<<<<<<< HEAD
+
 /*
     Funzione che prende il puntatore a un vettore come parametro. Ordina il vettore tramite selection sort.
     La logica utilizzata per scandire è quella degli indirizzi.
@@ -97,7 +97,7 @@ void stampaArray(int *v){
 
     for(i=0; *(v+i)<N;i++)
         printf("%d ",*(v+i));
-=======
+}
 //  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
 void potenza(int num, int pot){
     int ris=1;
@@ -118,13 +118,11 @@ int potenzaRicorsiva(int num, int pot){
         num=num*potenzaRicorsiva(num,pot-1);
     }
     return num;
->>>>>>> bbf4e177f7e2d462e8248484753def2bad4320b2
 }
 
 void vet(){
     int *v;
     int max;
-<<<<<<< HEAD
     v=creaArray(N);
     max=maxElemArray(v,N);
     printf("massimo elemento dell'array = %d\n",max);
@@ -132,11 +130,10 @@ void vet(){
     sort(v);
     printf("Array ordinato:\n");
     stampaArray(v);
-=======
-    v=creaArray(dim);
-    max=maxElemArray(v,dim);
+    v=creaArray(N);
+    max=maxElemArray(v,N);
     printf("\nmassimo elemento dell'array = %d\n",max);
-    pariDispari(v,dim);
+    pariDispari(v,N);
     potenza(3,2);
     int ris;
     int n1,n2;
@@ -144,5 +141,4 @@ void vet(){
     n2=4;
     ris=potenzaRicorsiva(n1,n2);
     printf("\npotenza ricorsiva di %d elevato a %d = %d\n",n1,n2,ris);
->>>>>>> bbf4e177f7e2d462e8248484753def2bad4320b2
 }

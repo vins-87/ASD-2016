@@ -1,5 +1,6 @@
 #ifndef ARRAY_H
 #define ARRAY_H
+#define N 10
 
 #endif // ARRAY_H
 
