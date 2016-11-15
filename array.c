@@ -55,6 +55,7 @@ void pariDispari(int *a, int N){
     }
 }
 
+<<<<<<< HEAD
 /*
     Funzione che prende il puntatore a un vettore come parametro. Ordina il vettore tramite selection sort.
     La logica utilizzata per scandire è quella degli indirizzi.
@@ -96,11 +97,34 @@ void stampaArray(int *v){
 
     for(i=0; *(v+i)<N;i++)
         printf("%d ",*(v+i));
+=======
+//  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
+void potenza(int num, int pot){
+    int ris=1;
+    int i;
+    for(i=0;i<pot;i++){
+        ris=ris*num;
+    }
+    printf("%d elevato a %d = %d\n",num,pot,ris);
+}
+
+/*  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
+    Questa volta però utilizzando una funzione ricorsiva.
+*/
+int potenzaRicorsiva(int num, int pot){
+    if(pot==1)
+        return num;
+    else{
+        num=num*potenzaRicorsiva(num,pot-1);
+    }
+    return num;
+>>>>>>> bbf4e177f7e2d462e8248484753def2bad4320b2
 }
 
 void vet(){
     int *v;
     int max;
+<<<<<<< HEAD
     v=creaArray(N);
     max=maxElemArray(v,N);
     printf("massimo elemento dell'array = %d\n",max);
@@ -108,4 +132,17 @@ void vet(){
     sort(v);
     printf("Array ordinato:\n");
     stampaArray(v);
+=======
+    v=creaArray(dim);
+    max=maxElemArray(v,dim);
+    printf("\nmassimo elemento dell'array = %d\n",max);
+    pariDispari(v,dim);
+    potenza(3,2);
+    int ris;
+    int n1,n2;
+    n1=3;
+    n2=4;
+    ris=potenzaRicorsiva(n1,n2);
+    printf("\npotenza ricorsiva di %d elevato a %d = %d\n",n1,n2,ris);
+>>>>>>> bbf4e177f7e2d462e8248484753def2bad4320b2
 }
