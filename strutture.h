@@ -4,6 +4,7 @@
 //strutture.h
 #ifndef STRUTTURE_H
 #define STRUTTURE_H
+#define H 5
 
 typedef struct{
     stringa nome;
@@ -20,3 +21,8 @@ typedef struct{
 
 persona* creaPersona();
 void strutture();
+void leggiPunto(Punto a[], int dim);
+void stampaPunto(Punto a[], int dim);
+Punto puntoMedio(Punto a, Punto b);
+float calcolaDistanza(Punto a, Punto b);
+
