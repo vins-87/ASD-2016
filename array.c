@@ -17,7 +17,7 @@ int* creaArray(int dim){
     return v;
 }
 
-int maxElemArray(int *v, int dim){
+void maxElemArray(int *v, int dim){
     int i;
     int max;
     max=v[0];
@@ -25,7 +25,7 @@ int maxElemArray(int *v, int dim){
         if(v[i]>max)
             max=v[i];
     }
-    return max;
+    printf("massimo elemento dell'array = %d\n",max);
 }
 
 /*  Esercizio: Scrivere un programma che data una sequenza di 10 numeri interi calcoli
@@ -95,6 +95,7 @@ void stampaArray(int *v){
 
     for(i=0; i<M;i++)
         printf("%d ",v[i]);
+        printf("\n");
 }
 
 //  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
@@ -104,7 +105,7 @@ void potenza(int num, int pot){
     for(i=0;i<pot;i++){
         ris=ris*num;
     }
-    printf("%d elevato a %d = %d\n",num,pot,ris);
+    printf("\n%d elevato a %d = %d\n",num,pot,ris);
 }
 
 /*  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
@@ -121,22 +122,16 @@ int potenzaRicorsiva(int num, int pot){
 
 void vet(){
     int *v;
-    int max;
 
     v=creaArray(M);
-    max=maxElemArray(v,M);
-    printf("massimo elemento dell'array = %d\n",max);
+    maxElemArray(v,M);
     pariDispari(v,M);
 
-    v=creaArray(M);
     sort(v);
     printf("\nArray ordinato:\n");
     stampaArray(v);
 
-    v=creaArray(M);
-    max=maxElemArray(v,M);
-    printf("\nmassimo elemento dell'array = %d\n",max);
-    pariDispari(v,M);
+    free(v);
     potenza(3,2);
 
     int ris;
