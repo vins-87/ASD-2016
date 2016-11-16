@@ -77,3 +77,42 @@
 	"strutture.h"
 	<math.h>
 
+1479131180 source:c:\users\falcao5\documents\github\asd-2016\main.c
+	<stdio.h>
+	<stdlib.h>
+	"matrici.h"
+	"array.h"
+	"stringhe.h"
+	"strutture.h"
+
+1479131180 c:\users\falcao5\documents\github\asd-2016\matrici.h
+
+1479295781 c:\users\falcao5\documents\github\asd-2016\array.h
+
+1479131180 c:\users\falcao5\documents\github\asd-2016\stringhe.h
+
+1479295834 c:\users\falcao5\documents\github\asd-2016\strutture.h
+	<stdio.h>
+	<stdlib.h>
+	"stringhe.h"
+
+1479146278 source:c:\users\falcao5\documents\github\asd-2016\matrici.c
+	<stdio.h>
+	<stdlib.h>
+	"matrici.h"
+
+1479294980 source:c:\users\falcao5\documents\github\asd-2016\stringhe.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"stringhe.h"
+
+1479294980 source:c:\users\falcao5\documents\github\asd-2016\strutture.c
+	"strutture.h"
+	<math.h>
+
+1479295779 source:c:\users\falcao5\documents\github\asd-2016\array.c
+	<stdio.h>
+	<stdlib.h>
+	"array.h"
+

@@ -21,8 +21,8 @@ typedef struct{
 
 persona* creaPersona();
 void strutture();
-void leggiPunto(Punto a[], int dim);
-void stampaPunto(Punto a[], int dim);
+void leggiPunti(Punto a[], int dim);
+void stampaPunti(Punto a[], int dim);
 Punto puntoMedio(Punto a, Punto b);
 float calcolaDistanza(Punto a, Punto b);
-
+void strutture();

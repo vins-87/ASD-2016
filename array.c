@@ -122,6 +122,7 @@ int potenzaRicorsiva(int num, int pot){
 void vet(){
     int *v;
     int max;
+
     v=creaArray(M);
     max=maxElemArray(v,M);
     printf("massimo elemento dell'array = %d\n",max);
@@ -137,8 +138,10 @@ void vet(){
     printf("\nmassimo elemento dell'array = %d\n",max);
     pariDispari(v,M);
     potenza(3,2);
+
     int ris;
     int n1,n2;
+
     n1=3;
     n2=4;
     ris=potenzaRicorsiva(n1,n2);
