@@ -6,15 +6,13 @@ Tutti i metodi sono in ordine di utilizzo nella funzione vet(), così come sono n
 #include <stdlib.h>
 #include "array.h"
 
-    // Dimensione array (il #define non mi funzionava..
-
 //CREA ARRAY DA INPUT E RITORNA IL PUNTATORE AD ESSA
 int* creaArray(int dim){
     int *v;
     int i;
-    v=(int*)calloc(N,sizeof(int));
-    printf("inserisci %d elementi nell'array\n",N);
-    for(i=0;i<N;i++)
+    v=(int*)calloc(M,sizeof(int));
+    printf("\nInserisci %d elementi nell'array\n",M);
+    for(i=0;i<M;i++)
         scanf("%d",&v[i]);
     return v;
 }
@@ -38,7 +36,7 @@ void pariDispari(int *a, int dim){
     int i;
     int np=0;
     int nd=0;
-    for(i=0;i<N;i++){
+    for(i=0;i<M;i++){
         printf("%d ",a[i]);
         if(a[i]%2==0)
             np++;
@@ -69,11 +67,11 @@ void sort(int *a){
     int posmin;
     int min;
 
-    for(i=0;a[i]<N;i++){       //Per ogni elemento a[i] del vettore
+    for(i=0;i<M;i++){       //Per ogni elemento a[i] del vettore
         posmin=i;
         min=a[i];
 
-        for(j=i+1;a[j]<N;j++){ //Per ogni elemento della parte successiva a a[i] del vettore
+        for(j=i+1;j<M;j++){ //Per ogni elemento della parte successiva a a[i] del vettore
 
             if(min>a[j]){   //Condizione di minimo
                 posmin=j;
@@ -83,8 +81,8 @@ void sort(int *a){
         }
 
         if(posmin!=i){          // Scambio l'elemento in posizione i-esima con l'elemento in posizione di minimo
-            *(a+posmin)=*(a+i); // a[posmin] = a[i]
-            *(a+i)=min;         // a[i] = min
+            a[posmin] = a[i];
+            a[i] = min;
         }
 
     }
@@ -95,9 +93,10 @@ void sort(int *a){
 void stampaArray(int *v){
     int i;
 
-    for(i=0; *(v+i)<N;i++)
-        printf("%d ",*(v+i));
+    for(i=0; i<M;i++)
+        printf("%d ",v[i]);
 }
+
 //  Esercizio: Scrivere un programma per calcolare la potenza b di un numero intero a (con b >= 0).
 void potenza(int num, int pot){
     int ris=1;
@@ -123,17 +122,20 @@ int potenzaRicorsiva(int num, int pot){
 void vet(){
     int *v;
     int max;
-    v=creaArray(N);
-    max=maxElemArray(v,N);
+    v=creaArray(M);
+    max=maxElemArray(v,M);
     printf("massimo elemento dell'array = %d\n",max);
-    pariDispari(v,N);
+    pariDispari(v,M);
+
+    v=creaArray(M);
     sort(v);
-    printf("Array ordinato:\n");
+    printf("\nArray ordinato:\n");
     stampaArray(v);
-    v=creaArray(N);
-    max=maxElemArray(v,N);
+
+    v=creaArray(M);
+    max=maxElemArray(v,M);
     printf("\nmassimo elemento dell'array = %d\n",max);
-    pariDispari(v,N);
+    pariDispari(v,M);
     potenza(3,2);
     int ris;
     int n1,n2;

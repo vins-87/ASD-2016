@@ -38,12 +38,12 @@
 	"strutture.h"
 	<math.h>
 
-1479220502 source:c:\users\m. valerio falcone\github\array.c
+1479224072 source:c:\users\m. valerio falcone\github\array.c
 	<stdio.h>
 	<stdlib.h>
 	"array.h"
 
-1479220312 c:\users\m. valerio falcone\github\array.h
+1479223274 c:\users\m. valerio falcone\github\array.h
 
 1479118014 source:c:\users\m. valerio falcone\github\main.c
 	<stdio.h>
@@ -73,7 +73,7 @@
 	<string.h>
 	"stringhe.h"
 
-1479221549 source:c:\users\m. valerio falcone\github\strutture.c
+1479221690 source:c:\users\m. valerio falcone\github\strutture.c
 	"strutture.h"
 	<math.h>
 
