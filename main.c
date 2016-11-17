@@ -21,12 +21,8 @@ int main(){
                 break;
         case 3: strutture();
                 break;
-<<<<<<< HEAD
         case 4: liste();
                 break;
-=======
-
->>>>>>> 10e1356c4cbd3624d2db0121061716ba74e70df0
         default: printf("esci");
                 break;
     }
