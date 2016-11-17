@@ -6,6 +6,7 @@
 *.o
 *.depend
 *.cbp
+*.save-failed
 
 # Precompiled Headers
 *.gch
