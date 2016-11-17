@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include "liste.h"
+
+void creaLista(){
+    lista l1=(lista)malloc(sizeof(Nodo));
+    l1->prev=NULL;
+    l1->next=NULL;
+    l1->info=0;
+}
+
+void liste(){
+    creaLista();
+}
