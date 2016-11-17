@@ -4,6 +4,7 @@
 #include "array.h"
 #include "stringhe.h"
 #include "strutture.h"
+#include "liste.h"
 
 int main()
 {
@@ -18,6 +19,8 @@ int main()
         case 2: stringhe();
                 break;
         case 3: strutture();
+                break;
+        case 4: liste();
                 break;
         default: printf("esci");
                 break;
