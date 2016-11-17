@@ -5,12 +5,13 @@
 #include "stringhe.h"
 #include "strutture.h"
 
-int main()
-{
+int main(){
+
     int sel=0;
-    printf("cosa vogliamo usare?\n(0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=alberi binari\n");
+    printf("Vins ebreo?\n(0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=alberi binari\n");
     scanf("%d",&sel);
     switch(sel){
+
         case 0: vet();
                 break;
         case 1: matrice();
@@ -19,6 +20,7 @@ int main()
                 break;
         case 3: strutture();
                 break;
+
         default: printf("esci");
                 break;
     }
