@@ -25,4 +25,6 @@ void leggiPunti(Punto a[], int dim);
 void stampaPunti(Punto a[], int dim);
 Punto puntoMedio(Punto a, Punto b);
 float calcolaDistanza(Punto a, Punto b);
+void persone();
+void punti();
 void strutture();

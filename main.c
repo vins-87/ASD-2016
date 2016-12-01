@@ -5,6 +5,9 @@
 #include "stringhe.h"
 #include "strutture.h"
 #include "liste.h"
+#include "Votante.h"
+#include "Candidato.h"
+#include "lines.h"
 
 int main(){
 
@@ -23,6 +26,7 @@ int main(){
                 break;
         case 4: liste();
                 break;
+
         default: printf("esci");
                 break;
     }

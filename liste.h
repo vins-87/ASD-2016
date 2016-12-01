@@ -13,5 +13,4 @@ typedef struct nodo{
 lista* creaLista();
 void inserisciInCoda(int x, lista *p);
 void inserisciInTesta(int x, lista *p);
-
 void liste();
