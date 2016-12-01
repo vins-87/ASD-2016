@@ -5,8 +5,6 @@
 #include "stringhe.h"
 #include "strutture.h"
 #include "liste.h"
-#include "Votante.h"
-#include "Candidato.h"
 #include "lines.h"
 
 int main(){
