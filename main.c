@@ -5,7 +5,6 @@
 #include "stringhe.h"
 #include "strutture.h"
 #include "liste.h"
-#include "lines.h"
 
 int main(){
 
