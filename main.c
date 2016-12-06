@@ -5,6 +5,7 @@
 #include "stringhe.h"
 #include "strutture.h"
 #include "liste.h"
+#include "elezioni.h"
 
 int main(){
 
@@ -22,6 +23,8 @@ int main(){
         case 3: strutture();
                 break;
         case 4: liste();
+                break;
+        case 5: elezioni();
                 break;
 
         default: printf("esci");
