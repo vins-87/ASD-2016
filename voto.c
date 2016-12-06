@@ -75,12 +75,13 @@ candidato *temp = (candidato*)malloc(sizeof(candidato));
 
 int contaVotiDelCandidato(voti v, candidato c){
 
+    voto temp;
     int result = 0;
 
     while(v!=NULL){
-        voto temp = v->info;
+        temp = v->info;
 
-        if(confronta(temp.codice, c.codice))
+        if(confronta(temp.codice, c.codice)==1)
             result++;
 
         v = v->next;
