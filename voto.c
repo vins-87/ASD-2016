@@ -33,7 +33,7 @@ int numbervoti(voti v){
         v = v->next;
     }
 
-    return result;
+    return result-1;    // il numero di nodi della lista meno la radice
 }
 
 int checkVotoSuListaCandidati(voto v, candidati c){
@@ -56,7 +56,7 @@ int checkvoti(voti v, candidati c){
         v = v->next;
     }
 
-    return result;
+    return result-1;    // il numero di nodi della lista meno la radice
 }
 
 candidato *selezionaCandidato(candidati c,stringa nome,stringa cognome){
@@ -97,7 +97,10 @@ int counter(voti v, candidati c, stringa nome, stringa cognome){
 
     temp = selezionaCandidato(c,nome,cognome);
 
-    return contaVotiDelCandidato(v,*temp);
+    if(temp!=NULL)
+        return contaVotiDelCandidato(v,*temp);
+
+    return 0;
 }
 
 /* Rimuove dalla lista dei votanti, tutti i votanti che non hanno votato correttamente <Il loro codice non e' presente nella lista dei candidati>*/
