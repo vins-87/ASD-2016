@@ -5,11 +5,12 @@
 #include "stringhe.h"
 #include "strutture.h"
 #include "liste.h"
+#include "elezioni.h"
 
 int main(){
 
     int sel=0;
-    printf("Vins ebreo?\n(0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=alberi binari\n");
+    printf("Vins ebreo?\n(0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=alberi binari\n");
     scanf("%d",&sel);
     switch(sel){
 
@@ -23,6 +24,9 @@ int main(){
                 break;
         case 4: liste();
                 break;
+        case 5: elezioni();
+                break;
+
         default: printf("esci");
                 break;
     }

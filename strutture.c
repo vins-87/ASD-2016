@@ -76,12 +76,14 @@ float calcolaDistanza(Punto a, Punto b){
     return result;
 }
 
-void strutture(){
+void persone(){
     persona *p1=(persona*)malloc(sizeof(persona));
     p1=creaPersona();
     printf("nome: %s\ncognome: %s\nanni: %d",p1->nome,p1->cognome,p1->anni);
     free(p1);
+}
 
+void punti(){
     Punto p[H];
     printf("\nInserisci le coordinate di %d punti.",H);
     leggiPunti(p,H);
@@ -90,4 +92,10 @@ void strutture(){
     printf("Il punto medio tra i primi due punti inseriti e' di coordinate (%f,%f)",medio.x,medio.y);
     float dist = calcolaDistanza(p[0],p[1]);
     printf("La distanza misurata tra i primi due punti e' %f", dist);
+}
+
+void strutture(){
+    persone();
+    punti();
+
 }
