@@ -17,6 +17,15 @@ int* creaArray(int dim){
     return v;
 }
 
+int trovaElemArray(int v[], int dim, int n){
+    int i;
+    for(i=0;i<dim;i++){
+        if(v[i]==n)
+            return 1;
+    }
+    return 0;
+}
+
 void maxElemArray(int *v, int dim){
     int i;
     int max;
