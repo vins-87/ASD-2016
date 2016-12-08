@@ -8,8 +8,10 @@ void inizializzaListaCandidati(candidati *c){
 }
 
 void inizializzaListaVotanti(voti *v){
-    addvoto(v,"marco", "cappella", "1");
-    addvoto(v,"andrea", "cherubini", "0");
+    addvoto(v,"marco", "cappella", "0");
+    addvoto(v,"marco","sbaffoni","1");
+    addvoto(v,"andrea", "cherubini", "1");
+    addvoto(v,"giorgio","lauzi","2");
 }
 
 void elezioni(){

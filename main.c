@@ -8,12 +8,13 @@
 #include "elezioni.h"
 
 int main(){
-int sel;
-    while(sel!=-1){
-        sel=0;
+
+        int sel=0;
         printf("Vins ebreo?\n(-1=esci,0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=alberi binari\n");
         scanf("%d",&sel);
         switch(sel){
+
+            case -1: break;
 
             case 0: vet();
                     break;
@@ -31,6 +32,6 @@ int sel;
             default: printf("esci");
                     break;
         }
-    }
+
     return 0;
 }
