@@ -1,7 +1,6 @@
 #ifndef PERSONE_H
 #define PERSONE_H
 
-
 typedef char* stringa;
 
 typedef struct elem{
