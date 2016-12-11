@@ -5,7 +5,6 @@
 
 /** PROFONDITA' NODO
 ----->INIZIO*/
-
 int profonditaNodoAux(nodoAlberoParent a1){
     if(a1){
         return 1+profonditaNodoAux(a1->parent);
@@ -25,11 +24,38 @@ int profonditaNodo(nodoAlberoParent a1, int n){
         return -1;
     }
 }
-
-/**PROFONDITA' NODO
+/** PROFONDITA' NODO
 <-----FINE*/
 
+/** NUMERO TOTALI DI NODI DELL'ALBERO
+----->INIZIO*/
+int contaNodi(nodoAlberoParent a1){
+    if(a1){
+        return 1+contaNodi(a1->sx)+contaNodi(a1->dx);
+    }else{
+        return 0;
+    }
+}
+/** NUMERO TOTALI DI NODI DELL'ALBERO
+<-----FINE*/
 
+/** NUMERO DI NODI AL LIVELLO level
+----->INIZIO*/
+int contaNodiLivello(nodoAlberoParent a1, int level){
+    if(level==0){
+        return 1;
+    }
+    if(a1){
+        return contaNodiLivello(a1->sx,level-1)+contaNodiLivello(a1->dx,level-1);
+    }else{
+        return 0;
+    }
+}
+/** NUMERO DI NODI AL LIVELLO L
+<-----FINE*/
+
+/** CREA ALBERO CON PARENT
+----->INIZIO*/
 nodoAlberoParent creaAlberoParent(){
     nodoAlberoParent al=(nodoAlberoParent)malloc(sizeof(nodoAlbeP));
     nodoAlberoParent root=al;
@@ -91,8 +117,17 @@ nodoAlberoParent creaAlberoParent(){
     al->dx->dx->dx=NULL;
     return root;
 }
+/** CREA ALBERO CON PARENT
+<-----FINE*/
 
 void alberiParent(){
     nodoAlberoParent a1=creaAlberoParent();
     printf("profondita del nodo %d = %d\n",45,profonditaNodo(a1,45));
+    printf("numero totale di nodi albero = %d\n",contaNodi(a1));
+    printf("numero di nodi al livello %d = %d\n",0,contaNodiLivello(a1,0));
+    printf("numero di nodi al livello %d = %d\n",1,contaNodiLivello(a1,1));
+    printf("numero di nodi al livello %d = %d\n",2,contaNodiLivello(a1,2));
+    printf("numero di nodi al livello %d = %d\n",3,contaNodiLivello(a1,3));
+    printf("numero di nodi al livello %d = %d\n",4,contaNodiLivello(a1,4));
+    printf("numero di nodi al livello %d = %d\n",5,contaNodiLivello(a1,5));
 }
