@@ -8,11 +8,12 @@
 #include "elezioni.h"
 #include "persone.h"
 #include "alberi.h"
+#include "alberiParent.h"
 
 int main(){
 
     int sel=0;
-    printf("Vins ebreo?\n(-1=esci,0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=EsercitazioneByVins, 7=alberi binari\n");
+    printf("Vins ebreo?\n(-1=esci,0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=EsercitazioneByVins, 7=alberiBinari, 8=alberiBinariParent\n");
     scanf("%d",&sel);
     switch(sel){
         case -1: break;
@@ -32,6 +33,8 @@ int main(){
         case 6: elezioniByVins();
                 break;
         case 7: alberi();
+                break;
+        case 8: alberiParent();
                 break;
     }
     return 0;

@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "alberi.h"
 
+/** VISITE ALBERO
+----->INIZIO */
 void visitaAlberoPreorder(nodoAlbero a1){
     if(a1){
         printf("%d\n",a1->info);
@@ -25,7 +27,31 @@ void visitaAlberoPostorder(nodoAlbero a1){
         printf("%d\n",a1->info);
     }
 }
+/** VISITE ALBERO
+<-----FINE */
 
+/** ALTEZZA ALBERO
+----->INIZIO*/
+int maggiore(int n, int m){
+    if(n>m){
+        return n;
+    }else{
+        return m;
+    }
+}
+
+int altezzaAlbero(nodoAlbero a1){
+    if(a1){
+        return 1+maggiore(altezzaAlbero(a1->sx),altezzaAlbero(a1->dx));
+    }else{
+        return -1;
+    }
+}
+/** ALTEZZA ALBERO
+<-----FINE*/
+
+/** ARRAY 2 ALBERO
+----->INIZIO*/
 void addNodoAlbero(nodoAlbero a1, int arr[], int i,int dim){
     if(a1!=NULL&&i<dim){
         a1->info=arr[i];
@@ -52,6 +78,9 @@ nodoAlbero arr2albero(int arr[], int dim){
     addNodoAlbero(a1,arr,i,dim);
     return root;
 }
+/** ARRAY 2 ALBERO
+<-----FINE*/
+
 
 nodoAlbero creaAlbero(){
     nodoAlbero al=(nodoAlbero)malloc(sizeof(nodoAlbe));
@@ -116,4 +145,6 @@ void alberi(){
     visitaAlberoPostorder(a2);
     printf("********visita preordine********\n");
     visitaAlberoPreorder(a2);
+    printf("altezza albero = %d",altezzaAlbero(a2));
+    free(a2);
 }
