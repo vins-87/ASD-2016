@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "alberi.h"
 
-
 void visitaAlberoPreorder(nodoAlbero a1){
     if(a1){
         printf("%d\n",a1->info);
@@ -25,6 +24,33 @@ void visitaAlberoPostorder(nodoAlbero a1){
         visitaAlberoPostorder(a1->dx);
         printf("%d\n",a1->info);
     }
+}
+
+void addNodoAlbero(nodoAlbero a1, int arr[], int i,int dim){
+    if(a1!=NULL&&i<dim){
+        a1->info=arr[i];
+        if(((2*i)+1)<dim){
+            a1->sx=(nodoAlbero)malloc(sizeof(nodoAlbe));
+            a1->sx->sx=NULL;
+            a1->sx->dx=NULL;
+            addNodoAlbero(a1->sx,arr,((2*i)+1),dim);
+        }
+        if(((2*i)+2)<dim){
+            a1->dx=(nodoAlbero)malloc(sizeof(nodoAlbe));
+            a1->dx->sx=NULL;
+            a1->dx->dx=NULL;
+            addNodoAlbero(a1->dx,arr,((2*i)+2),dim);
+        }
+    }
+}
+
+nodoAlbero arr2albero(int arr[], int dim){
+    nodoAlbero a1=(nodoAlbero)malloc(sizeof(nodoAlbe));
+    nodoAlbero root=a1;
+    int i=0;
+    a1->info=arr[0];
+    addNodoAlbero(a1,arr,i,dim);
+    return root;
 }
 
 nodoAlbero creaAlbero(){
@@ -83,4 +109,11 @@ void alberi(){
     visitaAlberoInorder(a1);
     printf("********visita postordine********\n");
     visitaAlberoPostorder(a1);
+    free(a1);
+    int arr[]={69,89,28,39,66,44,12,2,71};
+    nodoAlbero a2=arr2albero(arr,9);
+    printf("********visita postordine********\n");
+    visitaAlberoPostorder(a2);
+    printf("********visita preordine********\n");
+    visitaAlberoPreorder(a2);
 }
