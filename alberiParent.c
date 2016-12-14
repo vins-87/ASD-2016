@@ -3,6 +3,34 @@
 #include "alberiParent.h"
 #include "alberi.h"
 
+/** VISITE ALBERO
+----->INIZIO */
+void visitaAlberoParentPreorder(nodoAlberoParent a1){
+    if(a1){
+        printf("%d ",a1->info);
+        visitaAlberoParentPreorder(a1->sx);
+        visitaAlberoParentPreorder(a1->dx);
+    }
+}
+
+void visitaAlberoParentInorder(nodoAlberoParent a1){
+    if(a1){
+        visitaAlberoParentInorder(a1->sx);
+        printf("%d ",a1->info);
+        visitaAlberoParentInorder(a1->dx);
+    }
+}
+
+void visitaAlberoParentPostorder(nodoAlberoParent a1){
+    if(a1){
+        visitaAlberoParentPostorder(a1->sx);
+        visitaAlberoParentPostorder(a1->dx);
+        printf("%d ",a1->info);
+    }
+}
+/** VISITE ALBERO
+<-----FINE */
+
 /** PROFONDITA' NODO
 ----->INIZIO*/
 int profonditaNodoAux(nodoAlberoParent a1){
@@ -42,10 +70,10 @@ int contaNodi(nodoAlberoParent a1){
 /** NUMERO DI NODI AL LIVELLO level
 ----->INIZIO*/
 int contaNodiLivello(nodoAlberoParent a1, int level){
-    if(level==0){
-        return 1;
-    }
     if(a1){
+        if(level==0){
+            return 1;
+        }
         return contaNodiLivello(a1->sx,level-1)+contaNodiLivello(a1->dx,level-1);
     }else{
         return 0;
@@ -122,6 +150,12 @@ nodoAlberoParent creaAlberoParent(){
 
 void alberiParent(){
     nodoAlberoParent a1=creaAlberoParent();
+    visitaAlberoParentPreorder(a1);
+    printf("\n");
+    visitaAlberoParentInorder(a1);
+    printf("\n");
+    visitaAlberoParentPostorder(a1);
+    printf("\n");
     printf("profondita del nodo %d = %d\n",45,profonditaNodo(a1,45));
     printf("numero totale di nodi albero = %d\n",contaNodi(a1));
     printf("numero di nodi al livello %d = %d\n",0,contaNodiLivello(a1,0));
