@@ -62,6 +62,9 @@ int testInserimentoInCoda(){
 }
 
 void liste(){
+    printf("*********************************************\n");
+    printf("********************LISTE********************\n");
+    printf("*********************************************\n");
     lista *l2=(lista*)malloc(sizeof(lista));
     l2=creaLista();
     printf("stampa valore nodo: %d",l2->info);   // Stampa valore primo elemento della lista

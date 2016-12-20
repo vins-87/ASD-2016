@@ -6,7 +6,7 @@
 ----->INIZIO */
 void visitaAlberoPreorder(nodoAlbero a1){
     if(a1){
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
         visitaAlberoPreorder(a1->sx);
         visitaAlberoPreorder(a1->dx);
     }
@@ -15,7 +15,7 @@ void visitaAlberoPreorder(nodoAlbero a1){
 void visitaAlberoInorder(nodoAlbero a1){
     if(a1){
         visitaAlberoInorder(a1->sx);
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
         visitaAlberoInorder(a1->dx);
     }
 }
@@ -24,7 +24,7 @@ void visitaAlberoPostorder(nodoAlbero a1){
     if(a1){
         visitaAlberoPostorder(a1->sx);
         visitaAlberoPostorder(a1->dx);
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
     }
 }
 /** VISITE ALBERO
@@ -131,20 +131,30 @@ nodoAlbero creaAlbero(){
 }
 
 void alberi(){
+    printf("*********************************************\n");
+    printf("****************ALBERI BINARI****************\n");
+    printf("*********************************************\n");
     nodoAlbero a1=creaAlbero();
-    printf("********visita preordine********\n");
+    printf("---------------------------------------------\n");
+    printf("**************visita preordine***************\n");
     visitaAlberoPreorder(a1);
-    printf("********visita inordine********\n");
+    printf("\n---------------------------------------------\n");
+    printf("***************visita inordine***************\n");
     visitaAlberoInorder(a1);
-    printf("********visita postordine********\n");
+    printf("\n---------------------------------------------\n");
+    printf("**************visita postordine**************\n");
     visitaAlberoPostorder(a1);
+    printf("\n---------------------------------------------\n");
     free(a1);
+    printf("**************CREA ALBERO DA ARRAY************\n");
+    printf("arr[]={69,89,28,39,66,44,12,2,71}\n");
     int arr[]={69,89,28,39,66,44,12,2,71};
     nodoAlbero a2=arr2albero(arr,9);
-    printf("********visita postordine********\n");
+    printf("**************visita postordine**************\n");
     visitaAlberoPostorder(a2);
-    printf("********visita preordine********\n");
+    printf("\n**************visita preordine***************\n");
     visitaAlberoPreorder(a2);
-    printf("altezza albero = %d",altezzaAlbero(a2));
+    printf("\naltezza albero = %d",altezzaAlbero(a2));
+    printf("\n---------------------------------------------\n");
     free(a2);
 }

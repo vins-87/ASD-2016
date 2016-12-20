@@ -142,6 +142,9 @@ void addPersona(plist* persone, stringa codice, stringa nome, stringa cognome){
 }
 
 void elezioniByVins(){
+    printf("*********************************************\n");
+    printf("**************ELEZIONI BY VINS***************\n");
+    printf("*********************************************\n");
     plist candidati=(plist)malloc(sizeof(elist));
     candidati=NULL;
     plist votazioni=(plist)malloc(sizeof(elist));

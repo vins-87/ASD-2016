@@ -82,6 +82,22 @@ int contaNodiLivello(nodoAlberoParent a1, int level){
 /** NUMERO DI NODI AL LIVELLO L
 <-----FINE*/
 
+/** NUMERO DI FOGLIE
+----->INIZIO*/
+int contaFoglie(nodoAlberoParent a1){
+    if(a1){
+        if(a1->sx==NULL && a1->dx==NULL){
+            return 1;
+        }else{
+            return contaFoglie(a1->sx)+contaFoglie(a1->dx);
+        }
+    }else{
+        return 0;
+    }
+}
+/** NUMERO DI FOGLIE
+<-----FINE*/
+
 /** CREA ALBERO CON PARENT
 ----->INIZIO*/
 nodoAlberoParent creaAlberoParent(){
@@ -149,19 +165,29 @@ nodoAlberoParent creaAlberoParent(){
 <-----FINE*/
 
 void alberiParent(){
+    printf("*********************************************\n");
+    printf("********ALBERI BINARI CON NODO PADRE*********\n");
+    printf("*********************************************\n");
     nodoAlberoParent a1=creaAlberoParent();
+    printf("visita preordine\n");
     visitaAlberoParentPreorder(a1);
-    printf("\n");
+    printf("\n*********************************************\n");
+    printf("visita inordine\n");
     visitaAlberoParentInorder(a1);
-    printf("\n");
+    printf("\n*********************************************\n");
+    printf("visita postordine\n");
     visitaAlberoParentPostorder(a1);
-    printf("\n");
+    printf("\n*********************************************\n");
     printf("profondita del nodo %d = %d\n",45,profonditaNodo(a1,45));
+    printf("*********************************************\n");
     printf("numero totale di nodi albero = %d\n",contaNodi(a1));
+    printf("*********************************************\n");
     printf("numero di nodi al livello %d = %d\n",0,contaNodiLivello(a1,0));
     printf("numero di nodi al livello %d = %d\n",1,contaNodiLivello(a1,1));
     printf("numero di nodi al livello %d = %d\n",2,contaNodiLivello(a1,2));
     printf("numero di nodi al livello %d = %d\n",3,contaNodiLivello(a1,3));
     printf("numero di nodi al livello %d = %d\n",4,contaNodiLivello(a1,4));
     printf("numero di nodi al livello %d = %d\n",5,contaNodiLivello(a1,5));
+    printf("*********************************************\n");
+    printf("numero di foglie = %d\n",contaFoglie(a1));
 }

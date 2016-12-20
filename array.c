@@ -130,6 +130,9 @@ int potenzaRicorsiva(int num, int pot){
 }
 
 void vet(){
+    printf("*********************************************\n");
+    printf("********************ARRAY********************\n");
+    printf("*********************************************\n");
     int *v;
 
     v=creaArray(M);

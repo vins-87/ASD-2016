@@ -15,6 +15,9 @@ void inizializzaListaVotanti(voti *v){
 }
 
 void elezioni(){
+    printf("*********************************************\n");
+    printf("**************ELEZIONI BY FALCO**************\n");
+    printf("*********************************************\n");
 
     candidati *listaCandidati = (candidati*)malloc(sizeof(cnode));
     voti *listaVotanti = (voti*)malloc(sizeof(vnode));
