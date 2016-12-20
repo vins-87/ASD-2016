@@ -52,20 +52,20 @@ int altezzaAlbero(nodoAlbero a1){
 
 /** ARRAY 2 ALBERO
 ----->INIZIO*/
-void addNodoAlbero(nodoAlbero a1, int arr[], int i,int dim){
+void arr2alberoAux(nodoAlbero a1, int arr[], int i,int dim){
     if(a1!=NULL&&i<dim){
         a1->info=arr[i];
         if(((2*i)+1)<dim){
             a1->sx=(nodoAlbero)malloc(sizeof(nodoAlbe));
             a1->sx->sx=NULL;
             a1->sx->dx=NULL;
-            addNodoAlbero(a1->sx,arr,((2*i)+1),dim);
+            arr2alberoAux(a1->sx,arr,((2*i)+1),dim);
         }
         if(((2*i)+2)<dim){
             a1->dx=(nodoAlbero)malloc(sizeof(nodoAlbe));
             a1->dx->sx=NULL;
             a1->dx->dx=NULL;
-            addNodoAlbero(a1->dx,arr,((2*i)+2),dim);
+            arr2alberoAux(a1->dx,arr,((2*i)+2),dim);
         }
     }
 }
@@ -75,7 +75,7 @@ nodoAlbero arr2albero(int arr[], int dim){
     nodoAlbero root=a1;
     int i=0;
     a1->info=arr[0];
-    addNodoAlbero(a1,arr,i,dim);
+    arr2alberoAux(a1,arr,i,dim);
     return root;
 }
 /** ARRAY 2 ALBERO

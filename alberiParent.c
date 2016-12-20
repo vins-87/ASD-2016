@@ -98,6 +98,31 @@ int contaFoglie(nodoAlberoParent a1){
 /** NUMERO DI FOGLIE
 <-----FINE*/
 
+/** INSERIMENTO NODO IN ALBERO BINARIO DI RICERCA
+----->INIZIO*/
+int addNodoAlbero(nodoAlberoParent a1, int n){
+    if(a1){
+        if(a1->info==n){
+            return 0;
+        }else{
+            if(n<a1->info){
+                addNodoAlbero(a1->sx,n);
+            }else{
+                addNodoAlbero(a1->dx,n);
+            }
+        }
+    }else{
+        nodoAlberoParent a2=(nodoAlberoParent)malloc(sizeof(nodoAlbeP));
+        a2->info=n;
+        a2->sx=NULL;
+        a2->dx=NULL;
+        a1=a2;
+    }
+    return 1;
+}
+/** INSERIMENTO NODO IN ALBERO BINARIO DI RICERCA
+<-----FINE*/
+
 /** CREA ALBERO CON PARENT
 ----->INIZIO*/
 nodoAlberoParent creaAlberoParent(){
@@ -190,4 +215,14 @@ void alberiParent(){
     printf("numero di nodi al livello %d = %d\n",5,contaNodiLivello(a1,5));
     printf("*********************************************\n");
     printf("numero di foglie = %d\n",contaFoglie(a1));
+    printf("*********************************************\n");
+    printf("ADD NODO TO ALBERO\n");
+    if(addNodoAlbero(a1,5)){
+        printf("nodo aggiunto\n");
+    }else{
+        printf("nodo non aggiunto\n");
+    }
+    printf("visita preordine\n");
+    visitaAlberoParentPreorder(a1);
+    printf("\n*********************************************\n");
 }
