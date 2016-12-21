@@ -100,23 +100,24 @@ int contaFoglie(nodoAlberoParent a1){
 
 /** INSERIMENTO NODO IN ALBERO BINARIO DI RICERCA
 ----->INIZIO*/
-int addNodoAlbero(nodoAlberoParent a1, int n){
-    if(a1){
-        if(a1->info==n){
+int addNodoAlbero(nodoAlberoParent *a1, int n){
+    if(*a1==NULL){
+        *a1=(nodoAlberoParent)malloc(sizeof(nodoAlbeP));
+        (*a1)->info=n;
+        (*a1)->sx=NULL;
+        (*a1)->dx=NULL;
+    }else{
+        if((*a1)->info==n){
             return 0;
         }else{
-            if(n<a1->info){
-                addNodoAlbero(a1->sx,n);
+            if(n<(*a1)->info){
+                printf("%d < %d\n",n,(*a1)->info);
+                return addNodoAlbero(&(*a1)->sx,n);
             }else{
-                addNodoAlbero(a1->dx,n);
+                printf("%d > %d\n",n,(*a1)->info);
+                return addNodoAlbero(&(*a1)->dx,n);
             }
         }
-    }else{
-        nodoAlberoParent a2=(nodoAlberoParent)malloc(sizeof(nodoAlbeP));
-        a2->info=n;
-        a2->sx=NULL;
-        a2->dx=NULL;
-        a1=a2;
     }
     return 1;
 }
@@ -189,6 +190,8 @@ nodoAlberoParent creaAlberoParent(){
 /** CREA ALBERO CON PARENT
 <-----FINE*/
 
+/** CREA ALBERO DA ARRAY
+
 void alberiParent(){
     printf("*********************************************\n");
     printf("********ALBERI BINARI CON NODO PADRE*********\n");
@@ -217,7 +220,7 @@ void alberiParent(){
     printf("numero di foglie = %d\n",contaFoglie(a1));
     printf("*********************************************\n");
     printf("ADD NODO TO ALBERO\n");
-    if(addNodoAlbero(a1,5)){
+    if(addNodoAlbero(&a1,70)){
         printf("nodo aggiunto\n");
     }else{
         printf("nodo non aggiunto\n");
@@ -225,4 +228,5 @@ void alberiParent(){
     printf("visita preordine\n");
     visitaAlberoParentPreorder(a1);
     printf("\n*********************************************\n");
+    addArray2Albero()
 }
