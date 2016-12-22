@@ -124,6 +124,56 @@ int addNodoAlbero(nodoAlberoParent *a1, int n){
 /** INSERIMENTO NODO IN ALBERO BINARIO DI RICERCA
 <-----FINE*/
 
+/** RICERCA DEL MINIMO ELEMENTO NELL'ALBERO
+----->INIZIO*/
+int nodoMin(nodoAlberoParent a1){
+    if(a1){
+        if(a1->sx==NULL){
+            return a1->info;
+        }else{
+            return nodoMin(a1->sx);
+        }
+    }
+    return 0;
+}
+/** RICERCA DEL MINIMO ELEMENTO NELL'ALBERO
+<-----FINE*/
+
+/** RICERCA DEL MASSIMO ELEMENTO NELL'ALBERO
+----->INIZIO*/
+int nodoMax(nodoAlberoParent a1){
+    if(a1){
+        if(a1->dx==NULL){
+            return a1->info;
+        }else{
+            return nodoMax(a1->dx);
+        }
+    }
+    return 0;
+}
+/** RICERCA DEL MASSIMO ELEMENTO NELL'ALBERO
+<-----FINE*/
+
+/** CREA ALBERO DA INPUT
+----->INIZIO*/
+nodoAlberoParent creaAlberoParentDaInput(){
+    int numNodi;
+    int i;
+    int nodoAttuale;
+    nodoAlberoParent a1 = NULL;
+    printf("Creazione albero da input\n");
+    printf("Da quanti nodi deve essere composto l'albero?\n");
+    scanf("%d",&numNodi);
+    for(i=0;i<numNodi;i++){
+        printf("Inserire il nodo in posizione %d\n",i);
+        scanf("%d",&nodoAttuale);
+        addNodoAlbero(&a1,nodoAttuale);
+    }
+    return a1;
+}
+/** CREA ALBERO DA INPUT
+<-----FINE*/
+
 /** CREA ALBERO CON PARENT
 ----->INIZIO*/
 nodoAlberoParent creaAlberoParent(){
@@ -190,8 +240,6 @@ nodoAlberoParent creaAlberoParent(){
 /** CREA ALBERO CON PARENT
 <-----FINE*/
 
-/** CREA ALBERO DA ARRAY
-
 void alberiParent(){
     printf("*********************************************\n");
     printf("********ALBERI BINARI CON NODO PADRE*********\n");
@@ -220,7 +268,10 @@ void alberiParent(){
     printf("numero di foglie = %d\n",contaFoglie(a1));
     printf("*********************************************\n");
     printf("ADD NODO TO ALBERO\n");
-    if(addNodoAlbero(&a1,70)){
+    printf("Inserire il nodo da aggiungere all'albero\n");
+    int n;
+    scanf("%d",&n);
+    if(addNodoAlbero(&a1,n)){
         printf("nodo aggiunto\n");
     }else{
         printf("nodo non aggiunto\n");
@@ -228,5 +279,11 @@ void alberiParent(){
     printf("visita preordine\n");
     visitaAlberoParentPreorder(a1);
     printf("\n*********************************************\n");
-    addArray2Albero()
+    a1=creaAlberoParentDaInput();
+    printf("visita inordine\n");
+    visitaAlberoParentInorder(a1);
+    printf("\n*********************************************\n");
+    printf("Ricerca del nodo minimo = %d",nodoMin(a1));
+    printf("\n*********************************************\n");
+    printf("Ricerca del nodo massimo = %d",nodoMax(a1));
 }
