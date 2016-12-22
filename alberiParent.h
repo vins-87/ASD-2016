@@ -20,7 +20,7 @@ int profonditaNodo(nodoAlberoParent a1, int n);
 int contaNodi(nodoAlberoParent a1);
 int contaNodiLivello(nodoAlberoParent a1, int level);
 int contaFoglie(nodoAlberoParent a1);
-int addNodoAlbero(nodoAlberoParent *a1, int n);
+int addNodoAlbero(nodoAlberoParent *a1, nodoAlberoParent genitore, int n);
 int nodoMin(nodoAlberoParent a1);
 int nodoMax(nodoAlberoParent a1);
 nodoAlberoParent creaAlberoParentDaInput();

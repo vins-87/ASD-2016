@@ -100,10 +100,11 @@ int contaFoglie(nodoAlberoParent a1){
 
 /** INSERIMENTO NODO IN ALBERO BINARIO DI RICERCA
 ----->INIZIO*/
-int addNodoAlbero(nodoAlberoParent *a1, int n){
+int addNodoAlbero(nodoAlberoParent *a1, nodoAlberoParent genitore, int n){
     if(*a1==NULL){
         *a1=(nodoAlberoParent)malloc(sizeof(nodoAlbeP));
         (*a1)->info=n;
+        (*a1)->parent=genitore;
         (*a1)->sx=NULL;
         (*a1)->dx=NULL;
     }else{
@@ -112,10 +113,10 @@ int addNodoAlbero(nodoAlberoParent *a1, int n){
         }else{
             if(n<(*a1)->info){
                 printf("%d < %d\n",n,(*a1)->info);
-                return addNodoAlbero(&(*a1)->sx,n);
+                return addNodoAlbero(&(*a1)->sx,*a1,n);
             }else{
                 printf("%d > %d\n",n,(*a1)->info);
-                return addNodoAlbero(&(*a1)->dx,n);
+                return addNodoAlbero(&(*a1)->dx,*a1,n);
             }
         }
     }
@@ -154,6 +155,25 @@ int nodoMax(nodoAlberoParent a1){
 /** RICERCA DEL MASSIMO ELEMENTO NELL'ALBERO
 <-----FINE*/
 
+/** RICERCA DI UN NODO NELL'ALBERO
+----->INIZIO*/
+int trovaNodo(nodoAlberoParent a1, int n){
+    if(a1){
+        if(a1->info==n){
+	    return 1;
+        }else{
+            if(n<a1->info){
+                return trovaNodo(a1->sx,n);
+            }else{
+                return trovaNodo(a1->dx,n);
+            }
+        }
+    }
+    return 0;
+}
+/** RICERCA DI UN NODO NELL'ALBERO
+<-----FINE*/
+
 /** CREA ALBERO DA INPUT
 ----->INIZIO*/
 nodoAlberoParent creaAlberoParentDaInput(){
@@ -167,7 +187,11 @@ nodoAlberoParent creaAlberoParentDaInput(){
     for(i=0;i<numNodi;i++){
         printf("Inserire il nodo in posizione %d\n",i);
         scanf("%d",&nodoAttuale);
-        addNodoAlbero(&a1,nodoAttuale);
+        if(i==0){
+            addNodoAlbero(&a1,NULL,nodoAttuale);
+        }else{
+            addNodoAlbero(&a1,a1->parent,nodoAttuale);
+        }
     }
     return a1;
 }
@@ -271,7 +295,7 @@ void alberiParent(){
     printf("Inserire il nodo da aggiungere all'albero\n");
     int n;
     scanf("%d",&n);
-    if(addNodoAlbero(&a1,n)){
+    if(addNodoAlbero(&a1,a1->parent,n)){
         printf("nodo aggiunto\n");
     }else{
         printf("nodo non aggiunto\n");
@@ -286,4 +310,13 @@ void alberiParent(){
     printf("Ricerca del nodo minimo = %d",nodoMin(a1));
     printf("\n*********************************************\n");
     printf("Ricerca del nodo massimo = %d",nodoMax(a1));
+    printf("\n*********************************************\n");
+    printf("Inserisci il nodo da cercare nell'albero\n");
+    scanf("%d",&n);
+    if(trovaNodo(a1,n)){
+        printf("nodo trovato");
+    }else{
+        printf("nodo non trovato");
+    }
+
 }
