@@ -127,12 +127,12 @@ int addNodoAlbero(nodoAlberoParent *a1, nodoAlberoParent genitore, int n){
 
 /** RICERCA DEL MINIMO ELEMENTO NELL'ALBERO
 ----->INIZIO*/
-int nodoMin(nodoAlberoParent a1){
+int nodoMinBST(nodoAlberoParent a1){
     if(a1){
         if(a1->sx==NULL){
             return a1->info;
         }else{
-            return nodoMin(a1->sx);
+            return nodoMinBST(a1->sx);
         }
     }
     return 0;
@@ -142,12 +142,12 @@ int nodoMin(nodoAlberoParent a1){
 
 /** RICERCA DEL MASSIMO ELEMENTO NELL'ALBERO
 ----->INIZIO*/
-int nodoMax(nodoAlberoParent a1){
+int nodoMaxBST(nodoAlberoParent a1){
     if(a1){
         if(a1->dx==NULL){
             return a1->info;
         }else{
-            return nodoMax(a1->dx);
+            return nodoMaxBST(a1->dx);
         }
     }
     return 0;
@@ -353,9 +353,9 @@ void alberiParent(){
     printf("visita inordine\n");
     visitaAlberoParentInorder(a1);
     printf("\n*********************************************\n");
-    printf("Ricerca del nodo minimo = %d",nodoMin(a1));
+    printf("Ricerca del nodo minimo = %d",nodoMinBST(a1));
     printf("\n*********************************************\n");
-    printf("Ricerca del nodo massimo = %d",nodoMax(a1));
+    printf("Ricerca del nodo massimo = %d",nodoMaxBST(a1));
     printf("\n*********************************************\n");
     printf("Inserisci il nodo da cercare nell'albero\n");
     scanf("%d",&n);
