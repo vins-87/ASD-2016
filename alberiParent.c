@@ -174,6 +174,45 @@ int trovaNodo(nodoAlberoParent a1, int n){
 /** RICERCA DI UN NODO NELL'ALBERO
 <-----FINE*/
 
+/** STAMPA DEL CAMMINO DEL NODO
+----->INIZIO*/
+void stampaCamminoAux(nodoAlberoParent a1, int n){
+    if(a1){
+        printf("%d ",a1->info);
+        if(a1->info==n){
+            return;
+        }else{
+            if(n<a1->info){
+                stampaCamminoAux(a1->sx,n);
+            }else{
+                stampaCamminoAux(a1->dx,n);
+            }
+        }
+    }
+}
+
+void stampaCammino(nodoAlberoParent a1, int n){
+    if(trovaNodo(a1,n)){
+        stampaCamminoAux(a1,n);
+    }else{
+        printf("non trovato\n");
+    }
+}
+/** STAMPA DEL CAMMINO DEL NODO
+<-----FINE*/
+
+/** STAMPA DELL'ALBERO IN VERSIONE GRAFICA
+----->INIZIO*/
+void stampaAlberoGrafico(nodoAlberoParent a1){
+    printf("               %d\n",a1->info);
+    printf("       %d              %d\n",a1->sx->info,a1->dx->info);
+    printf("   %d      %d      %d      %d\n",a1->sx->sx->info,a1->sx->dx->info,a1->dx->sx->info,a1->dx->dx->info);
+    printf("     %d      %d      %d  %d\n",a1->sx->sx->dx->info,a1->sx->dx->dx->info,a1->dx->sx->dx->info,a1->dx->dx->sx->info);
+    printf("           %d  %d  %d\n",a1->sx->dx->dx->sx->info,a1->sx->dx->dx->dx->info,a1->dx->sx->dx->sx->info);
+}
+/** STAMPA DELL'ALBERO IN VERSIONE GRAFICA
+<-----FINE*/
+
 /** CREA ALBERO DA INPUT
 ----->INIZIO*/
 nodoAlberoParent creaAlberoParentDaInput(){
@@ -268,7 +307,10 @@ void alberiParent(){
     printf("*********************************************\n");
     printf("********ALBERI BINARI CON NODO PADRE*********\n");
     printf("*********************************************\n");
+    int n;
     nodoAlberoParent a1=creaAlberoParent();
+    stampaAlberoGrafico(a1);
+    printf("*********************************************\n");
     printf("visita preordine\n");
     visitaAlberoParentPreorder(a1);
     printf("\n*********************************************\n");
@@ -277,6 +319,11 @@ void alberiParent(){
     printf("\n*********************************************\n");
     printf("visita postordine\n");
     visitaAlberoParentPostorder(a1);
+    printf("\n*********************************************\n");
+    printf("Inserire il nodo del quale percorrere il cammino\n");
+    scanf("%d",&n);
+    printf("cammino del nodo %d\n",n);
+    stampaCammino(a1,n);
     printf("\n*********************************************\n");
     printf("profondita del nodo %d = %d\n",45,profonditaNodo(a1,45));
     printf("*********************************************\n");
@@ -293,7 +340,6 @@ void alberiParent(){
     printf("*********************************************\n");
     printf("ADD NODO TO ALBERO\n");
     printf("Inserire il nodo da aggiungere all'albero\n");
-    int n;
     scanf("%d",&n);
     if(addNodoAlbero(&a1,a1->parent,n)){
         printf("nodo aggiunto\n");
@@ -318,5 +364,4 @@ void alberiParent(){
     }else{
         printf("nodo non trovato");
     }
-
 }
