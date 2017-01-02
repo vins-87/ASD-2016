@@ -50,6 +50,46 @@ int altezzaAlbero(nodoAlbero a1){
 /** ALTEZZA ALBERO
 <-----FINE*/
 
+/** MAX ELEM ALBERO
+----->INIZIO*/
+int max3(int a, int b, int c) {
+    if (a > b)
+        if (c > a)
+            return c;
+        else
+            return a;
+    else
+        if (c > b)
+            return c;
+        else
+            return b;
+}
+
+int get_max(nodoAlbero t) {
+   int max_sx, max_dx;
+   /* caso base: albero vuoto */
+    if (t == NULL) return -1;
+        max_sx = get_max(t->sx);
+        max_dx = get_max(t->dx);
+    return max3(max_sx, max_dx, t->info);
+}
+/** MAX ELEM ALBERO
+<-----FINE*/
+
+/** ALBERI UGUALI
+----->INIZIO*/
+int uguali(nodoAlbero a1, nodoAlbero a2){
+    if(a1==NULL&&a2==NULL){
+        return 1;
+    }
+    if(a1==NULL||a2==NULL){
+        return 0;
+    }
+    return a1->info==a2->info&&uguali(a1->sx,a2->sx)&&uguali(a1->dx,a2->dx);
+}
+/** ALBERI UGUALI
+<-----FINE*/
+
 /** ARRAY 2 ALBERO
 ----->INIZIO*/
 void arr2alberoAux(nodoAlbero a1, int arr[], int i,int dim){
@@ -80,7 +120,6 @@ nodoAlbero arr2albero(int arr[], int dim){
 }
 /** ARRAY 2 ALBERO
 <-----FINE*/
-
 
 nodoAlbero creaAlbero(){
     nodoAlbero al=(nodoAlbero)malloc(sizeof(nodoAlbe));
@@ -145,7 +184,6 @@ void alberi(){
     printf("**************visita postordine**************\n");
     visitaAlberoPostorder(a1);
     printf("\n---------------------------------------------\n");
-    free(a1);
     printf("**************CREA ALBERO DA ARRAY************\n");
     printf("arr[]={69,89,28,39,66,44,12,2,71}\n");
     int arr[]={69,89,28,39,66,44,12,2,71};
@@ -155,6 +193,26 @@ void alberi(){
     printf("\n**************visita preordine***************\n");
     visitaAlberoPreorder(a2);
     printf("\naltezza albero = %d",altezzaAlbero(a2));
+    printf("\nmassimo elemento dell'albero = %d",get_max(a2));
     printf("\n---------------------------------------------\n");
+    printf("\n**************visita preordine***************\n");
+    visitaAlberoPreorder(a2);
+    printf("\n");
+    visitaAlberoPreorder(a2);
+    if(uguali(a2,a2)){
+        printf("\nalberi uguali");
+    }else{
+        printf("\nalberi diversi");
+    }
+    printf("\n---------------------------------------------\n");
+    visitaAlberoPreorder(a1);
+    printf("\n");
+    visitaAlberoPreorder(a2);
+    if(uguali(a1,a2)){
+        printf("\nalberi uguali");
+    }else{
+        printf("\nalberi diversi");
+    }
+    free(a1);
     free(a2);
 }
