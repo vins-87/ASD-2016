@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matrici.h"
+#include "main.h"
 
 //CREA E RIEMPI MATRICE PASSANDOGLI LE SUE DIMENSIONI
 int** creaMatricePiena(int r, int c){
@@ -62,5 +63,7 @@ void matrice(){
     rit=valore_massimo(A,r,c);
 
     printf("Valore max della matrice = %d",rit);
+    printf("\n---------------------------------------------\n");
+    main();
 }
 

@@ -5,6 +5,7 @@ Tutti i metodi sono in ordine di utilizzo nella funzione vet(), così come sono n
 #include <stdio.h>
 #include <stdlib.h>
 #include "array.h"
+#include "main.h"
 
 //CREA ARRAY DA INPUT E RITORNA IL PUNTATORE AD ESSA
 int* creaArray(int dim){
@@ -153,4 +154,6 @@ void vet(){
     n2=4;
     ris=potenzaRicorsiva(n1,n2);
     printf("\npotenza ricorsiva di %d elevato a %d = %d\n",n1,n2,ris);
+    printf("\n---------------------------------------------\n");
+    main();
 }

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "alberiParent.h"
 #include "alberi.h"
+#include "main.h"
 
 /** VISITE ALBERO
 ----->INIZIO */
@@ -364,4 +365,6 @@ void alberiParent(){
     }else{
         printf("nodo non trovato");
     }
+    printf("\n---------------------------------------------\n");
+    main();
 }

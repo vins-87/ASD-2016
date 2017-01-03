@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "alberi.h"
+#include "main.h"
 
 /** VISITE ALBERO
 ----->INIZIO */
@@ -213,6 +214,8 @@ void alberi(){
     }else{
         printf("\nalberi diversi");
     }
+    printf("\n---------------------------------------------\n");
     free(a1);
     free(a2);
+    main();
 }

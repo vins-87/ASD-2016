@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "persone.h"
+#include "main.h"
 
 /**
 Si considerino le elezioni americane per la nomina del presidente degli stati uniti.
@@ -160,4 +161,6 @@ void elezioniByVins(){
     rimuoviVotiNonValidi(&votazioni,&candidati);
     printf("numero di votazioni %d\n",personeTotali(&votazioni));
     printf("numero di votazioni non valide %d\n",votiNonValidi(&votazioni,&candidati));
+    printf("\n---------------------------------------------\n");
+    main();
 }

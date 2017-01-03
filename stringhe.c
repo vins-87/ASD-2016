@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "stringhe.h"
+#include "main.h"
 
 /** MODI PER CREARE STRINGHE
     char s[100];
@@ -142,5 +143,7 @@ void stringhe(){
         stringheVale();
     else
         stringheVins();
+    printf("\n---------------------------------------------\n");
+    main();
 }
 

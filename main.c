@@ -9,6 +9,7 @@
 #include "persone.h"
 #include "alberi.h"
 #include "alberiParent.h"
+#include "main.h"
 
 int main(){
 

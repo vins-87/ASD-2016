@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "liste.h"
+#include "main.h"
 
 lista* creaLista(){
     lista *l1=(lista*)malloc(sizeof(lista));
@@ -69,6 +70,7 @@ void liste(){
     l2=creaLista();
     printf("stampa valore nodo: %d",l2->info);   // Stampa valore primo elemento della lista
     printf("\nTest di inserimento in coda risulta: %d", testInserimentoInCoda());
-
     free(l2);
+    printf("\n---------------------------------------------\n");
+    main();
 }

@@ -4,6 +4,7 @@ Tutti i metodi sono in ordine di utilizzo nella funzione strutture(), così come 
 
 #include "strutture.h"
 #include <math.h>
+#include "main.h"
 
 persona* creaPersona(){
     persona *p=(persona*)malloc(sizeof(persona));
@@ -100,5 +101,6 @@ void strutture(){
     printf("*********************************************\n");
     persone();
     punti();
-
+    printf("\n---------------------------------------------\n");
+    main();
 }
