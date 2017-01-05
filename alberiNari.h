@@ -11,5 +11,6 @@ typedef nodoAlbeN *nodoAlberoNario;
 
 #endif // ALBERINARI_H
 
+
 nodoAlberoNario creaAlberoNario();
 void alberiNari();
