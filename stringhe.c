@@ -62,6 +62,43 @@ int contieneMinuscole(stringa s){
     return 0;
 }
 
+int isPalindroma(stringa s){
+    int i=0;
+    int j=lunghezzaStringa(s)-1;
+    while(i<j){
+        if(s[i]!=s[j]){
+            return 0;
+        }
+        i++;
+        j--;
+    }
+    return 1;
+}
+
+int isSottostringa(stringa s1,stringa s2){
+    int i=0;
+    int j;
+    int trovato=0;
+    int lung1=lunghezzaStringa(s1);
+    int lung2=lunghezzaStringa(s2);
+    if(lung1>=lung2){
+        int cont=0;
+        int k=0;
+        for(j=0;j<lung2;j++){
+            if(s1[k]==s2[j]){
+                cont++;
+            }
+            k++;
+        }
+        if(cont==lung2){
+            trovato = 1;
+        }else{
+            trovato = isSottostringa(&s1[i+1],s2);
+        }
+    }
+    return trovato;
+}
+
 //CREA STRINGA DI DIMENSIONE 100 E RITORNA IL PUNTATORE AD ESSA
 stringa creaStringa(){
     stringa st=(stringa)malloc(100*sizeof(char));
@@ -143,6 +180,16 @@ void stringheVins(){
         printf("contiene minuscole\n");
     }else{
         printf("non contiene minuscole\n");
+    }
+    if(isPalindroma(str1)){
+        printf("palindroma\n");
+    }else{
+        printf("non palindroma\n");
+    }
+    if(isSottostringa(str1,str2)){
+        printf("seconda stringa inclusa nella prima\n");
+    }else{
+        printf("seconda stringa non inclusa nella prima\n");
     }
     strcpy(str1,str2);
     printf("\nstringa %s copiata. risultato= %s\n",str1,str2);
