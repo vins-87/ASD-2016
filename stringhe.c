@@ -30,11 +30,40 @@ void leggiStringaArray(char s[]){
     for(i=0;i<N;i++){
         scanf("%s",&s[i]);
     }
+}
 
+int lunghezzaStringa(stringa s){
+    int i=0;
+    while(s[i]!='\0'){
+        i++;
+    }
+    return i;
+}
+
+int contieneMaiuscole(stringa s){
+    int i=0;
+    while(s[i]!='\0'){
+        if(s[i]>='A'&&s[i]<='Z'){
+            return 1;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int contieneMinuscole(stringa s){
+    int i=0;
+    while(s[i]!='\0'){
+        if(s[i]>='a'&&s[i]<='z'){
+            return 1;
+        }
+        i++;
+    }
+    return 0;
 }
 
 //CREA STRINGA DI DIMENSIONE 100 E RITORNA IL PUNTATORE AD ESSA
-char* creaStringa(){
+stringa creaStringa(){
     stringa st=(stringa)malloc(100*sizeof(char));
     printf("Inserisci una stringa qualsiasi:\n");
     scanf("%s",st);
@@ -43,7 +72,6 @@ char* creaStringa(){
 
 void stampaStringaArray(char s[]){
     int i;
-
     printf("La stringa inserita e':\n");
     for(i=0;s[i]!='\0';i++)
         printf("%c",s[i]);
@@ -58,7 +86,6 @@ void stampaStringaPuntatore(stringa s){
 int numeroDiOccorrenze(char s[], char c){
     int result = 0;
     int i;
-
     for(i=0; s[i]!='\0' ;i++)     // Per ogni elemento nella parte successiva del vettore
         if(s[i]==c)     //Se il carattere che ho preso in esame e' uguale a uno degli elementi del resto del vettore
             result++;
@@ -106,6 +133,17 @@ void stringheVins(){
     stringa str1,str2;
     str1=creaStringa();
     str2=creaStringa();
+    printf("lunghezza della stringa = %d\n",lunghezzaStringa(str1));
+    if(contieneMaiuscole(str1)){
+        printf("contiene maiuscole\n");
+    }else{
+        printf("non contiene maiuscole\n");
+    }
+    if(contieneMinuscole(str1)){
+        printf("contiene minuscole\n");
+    }else{
+        printf("non contiene minuscole\n");
+    }
     strcpy(str1,str2);
     printf("\nstringa %s copiata. risultato= %s\n",str1,str2);
     cmp=strcmp(str1,str2);
