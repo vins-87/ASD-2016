@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "alberiNari.h"
-#include "alberi.h"
 #include "main.h"
 
 void visitaAlberoNarioPreorder(nodoAlberoNario a1){
@@ -131,7 +130,6 @@ int numNodiConKfigli(nodoAlberoNario a1, int k){
 int verificaNodiPariConSoliFigliDispari(nodoAlberoNario a1){
     int rit=1;
     if(a1){
-        printf("nodo = %d\n",a1->info);
         if(a1->info%2==0){
             nodoAlberoNario temp=a1->figlio;
             while(temp){
@@ -143,7 +141,6 @@ int verificaNodiPariConSoliFigliDispari(nodoAlberoNario a1){
             }
         }
         rit=verificaNodiPariConSoliFigliDispari(a1->figlio)&&verificaNodiPariConSoliFigliDispari(a1->fratello);
-        //return rit;
     }
     return rit;
 }
@@ -278,9 +275,7 @@ void alberiNari(){
     scanf("%d",&k);
     printf("num di nodi con %d figli = %d\n",k,numNodiConKfigli(a1,k));
     printf("---------------------------------------------\n");
-    k=verificaNodiPariConSoliFigliDispari(a1);
-    printf("rit = %d\n",k);
-    if(k){
+    if(verificaNodiPariConSoliFigliDispari(a1)){
         printf("tutti i nodi pari hanno solo figli dispari\n");
     }else{
         printf("non tutti i nodi pari hanno solo figli dispari\n");
