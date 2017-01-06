@@ -170,6 +170,7 @@ void stringheVins(){
     stringa str1,str2;
     str1=creaStringa();
     str2=creaStringa();
+    printf("---------------------------------------------\n");
     printf("lunghezza della stringa = %d\n",lunghezzaStringa(str1));
     if(contieneMaiuscole(str1)){
         printf("contiene maiuscole\n");
@@ -192,14 +193,14 @@ void stringheVins(){
         printf("seconda stringa non inclusa nella prima\n");
     }
     strcpy(str1,str2);
-    printf("\nstringa %s copiata. risultato= %s\n",str1,str2);
+    printf("stringa %s copiata. risultato= %s\n",str1,str2);
     cmp=strcmp(str1,str2);
     if(cmp==0)
         printf("le stringhe sono uguali\n");
     else
         printf("le stringhe sono diverse\n");
     strcat(str1,str2);
-    printf("\nstringa risultante = %s",str1);
+    printf("stringa risultante = %s",str1);
     free(str1);
     free(str2);
 }
