@@ -285,9 +285,34 @@ stringa* trasformaStringhe(stringa *v,int dim){
     return v;
 }
 
+void nomiEnomignoli(stringa s1, stringa s2){
+    int i=0;
+    stringa stemp=(stringa)calloc(50,sizeof(char));
+    while(s1[i]!=' '){
+        stemp[i]=s1[i];
+        i++;
+    }
+    stemp[i]=s1[i];
+    i++;
+    stemp[i]='(';
+    stemp[i+1]='\0';
+    int j=lunghezzaStringa(s2);
+    s2[j]=')';
+    j++;
+    s2[j]=' ';
+    j++;
+    while(s1[i]!='\0'){
+        s2[j]=s1[i];
+        i++;
+        j++;
+    }
+    s2[j]='\0';
+    printf("risultato = |%s|",concatenaStringhe(stemp,s2));
+}
+
 //CREA STRINGA DI DIMENSIONE 100 E RITORNA IL PUNTATORE AD ESSA
 stringa creaStringa(){
-    stringa st=(stringa)malloc(100*sizeof(char));
+    stringa st=(stringa)malloc(50*sizeof(char));
     printf("Inserisci una stringa qualsiasi:\n");
     scanf("%s",st);
     return st;
@@ -361,6 +386,15 @@ void stringheVins(){
     stampaArrayDiStringhe(v,2);
     free(str1);
     free(str2);
+    printf("---------------------------------------------\n");
+    stringa s1=(stringa)calloc(50,sizeof(char));
+    stringa s2=(stringa)calloc(50,sizeof(char));
+    strcpy(s1,"andrea barbadoro");
+    strcpy(s2,"bar bie");
+    nomiEnomignoli(s1,s2);
+    printf("---------------------------------------------\n");
+    free(s1);
+    free(s2);
 }
 
 void stringheVale(){
