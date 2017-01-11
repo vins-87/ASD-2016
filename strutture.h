@@ -1,16 +1,16 @@
-#include<stdio.h>
-#include<stdlib.h>
 #include "stringhe.h"
 //strutture.h
 #ifndef STRUTTURE_H
 #define STRUTTURE_H
 #define H 5
 
-typedef struct{
+typedef struct {
     stringa nome;
     stringa cognome;
     int anni;
 }persona;
+
+typedef persona* listaPersone;
 
 typedef struct{
     float x;

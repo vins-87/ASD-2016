@@ -19,10 +19,17 @@ void stampaArray(vettore v, int lung){
     printf("\n");
 }
 
+/* Una sequenza S di 27 interi si dice perfetta se per ogni i tale che i 2 [1::9] allora i ricorre
+esattamente tre volte nella sequenza S. Ad esempio, la sequenza
+(1,9,1,2,1,8,2,4,6,2,7,9,4,5,8,6,3,4,7,5,3,9,6,8,3,5,7)
+e' perfetta. Si scriva una funzione C che prende come parametro un vettore di 27 interi
+e restituisce true (1) se il vettore rappresenta una sequenza perfetta e false (0) altrimenti.*/
 int sequenzaPerfetta(vettore v,int dim){
+    int perfetta=0;
     if(dim==27){
         int i,j;
         int cont=0;
+        perfetta=1;
         for(i=1;i<10;i++){
             for(j=0;j<27;j++){
                 if(v[j]==i){
@@ -34,9 +41,8 @@ int sequenzaPerfetta(vettore v,int dim){
             }
             cont=0;
         }
-        return 1;
     }
-    return 0;
+    return perfetta;
 }
 
 int trovaElemArray(int v[], int dim, int n){

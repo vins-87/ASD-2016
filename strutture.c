@@ -1,7 +1,8 @@
 /************************************************-ATTENZIONE-********************************************************************
 Tutti i metodi sono in ordine di utilizzo nella funzione strutture(), così come sono nell'ordine specificato nel file strutture.h
 ********************************************************************************************************************************/
-
+#include <stdio.h>
+#include <stdlib.h>
 #include "strutture.h"
 #include <math.h>
 #include "main.h"
