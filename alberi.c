@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "alberi.h"
+#include "main.h"
 
 /** VISITE ALBERO
 ----->INIZIO */
 void visitaAlberoPreorder(nodoAlbero a1){
     if(a1){
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
         visitaAlberoPreorder(a1->sx);
         visitaAlberoPreorder(a1->dx);
     }
@@ -15,7 +16,7 @@ void visitaAlberoPreorder(nodoAlbero a1){
 void visitaAlberoInorder(nodoAlbero a1){
     if(a1){
         visitaAlberoInorder(a1->sx);
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
         visitaAlberoInorder(a1->dx);
     }
 }
@@ -24,7 +25,7 @@ void visitaAlberoPostorder(nodoAlbero a1){
     if(a1){
         visitaAlberoPostorder(a1->sx);
         visitaAlberoPostorder(a1->dx);
-        printf("%d\n",a1->info);
+        printf("%d ",a1->info);
     }
 }
 /** VISITE ALBERO
@@ -50,22 +51,62 @@ int altezzaAlbero(nodoAlbero a1){
 /** ALTEZZA ALBERO
 <-----FINE*/
 
+/** MAX ELEM ALBERO
+----->INIZIO*/
+int max3(int a, int b, int c) {
+    if (a > b)
+        if (c > a)
+            return c;
+        else
+            return a;
+    else
+        if (c > b)
+            return c;
+        else
+            return b;
+}
+
+int get_max(nodoAlbero t) {
+   int max_sx, max_dx;
+   /* caso base: albero vuoto */
+    if (t == NULL) return -1;
+        max_sx = get_max(t->sx);
+        max_dx = get_max(t->dx);
+    return max3(max_sx, max_dx, t->info);
+}
+/** MAX ELEM ALBERO
+<-----FINE*/
+
+/** ALBERI UGUALI
+----->INIZIO*/
+int uguali(nodoAlbero a1, nodoAlbero a2){
+    if(a1==NULL&&a2==NULL){
+        return 1;
+    }
+    if(a1==NULL||a2==NULL){
+        return 0;
+    }
+    return a1->info==a2->info&&uguali(a1->sx,a2->sx)&&uguali(a1->dx,a2->dx);
+}
+/** ALBERI UGUALI
+<-----FINE*/
+
 /** ARRAY 2 ALBERO
 ----->INIZIO*/
-void addNodoAlbero(nodoAlbero a1, int arr[], int i,int dim){
+void arr2alberoAux(nodoAlbero a1, int arr[], int i,int dim){
     if(a1!=NULL&&i<dim){
         a1->info=arr[i];
         if(((2*i)+1)<dim){
             a1->sx=(nodoAlbero)malloc(sizeof(nodoAlbe));
             a1->sx->sx=NULL;
             a1->sx->dx=NULL;
-            addNodoAlbero(a1->sx,arr,((2*i)+1),dim);
+            arr2alberoAux(a1->sx,arr,((2*i)+1),dim);
         }
         if(((2*i)+2)<dim){
             a1->dx=(nodoAlbero)malloc(sizeof(nodoAlbe));
             a1->dx->sx=NULL;
             a1->dx->dx=NULL;
-            addNodoAlbero(a1->dx,arr,((2*i)+2),dim);
+            arr2alberoAux(a1->dx,arr,((2*i)+2),dim);
         }
     }
 }
@@ -75,12 +116,11 @@ nodoAlbero arr2albero(int arr[], int dim){
     nodoAlbero root=a1;
     int i=0;
     a1->info=arr[0];
-    addNodoAlbero(a1,arr,i,dim);
+    arr2alberoAux(a1,arr,i,dim);
     return root;
 }
 /** ARRAY 2 ALBERO
 <-----FINE*/
-
 
 nodoAlbero creaAlbero(){
     nodoAlbero al=(nodoAlbero)malloc(sizeof(nodoAlbe));
@@ -131,20 +171,51 @@ nodoAlbero creaAlbero(){
 }
 
 void alberi(){
+    printf("*********************************************\n");
+    printf("****************ALBERI BINARI****************\n");
+    printf("*********************************************\n");
     nodoAlbero a1=creaAlbero();
-    printf("********visita preordine********\n");
+    printf("---------------------------------------------\n");
+    printf("**************visita preordine***************\n");
     visitaAlberoPreorder(a1);
-    printf("********visita inordine********\n");
+    printf("\n---------------------------------------------\n");
+    printf("***************visita inordine***************\n");
     visitaAlberoInorder(a1);
-    printf("********visita postordine********\n");
+    printf("\n---------------------------------------------\n");
+    printf("**************visita postordine**************\n");
     visitaAlberoPostorder(a1);
-    free(a1);
+    printf("\n---------------------------------------------\n");
+    printf("**************CREA ALBERO DA ARRAY************\n");
+    printf("arr[]={69,89,28,39,66,44,12,2,71}\n");
     int arr[]={69,89,28,39,66,44,12,2,71};
     nodoAlbero a2=arr2albero(arr,9);
-    printf("********visita postordine********\n");
+    printf("**************visita postordine**************\n");
     visitaAlberoPostorder(a2);
-    printf("********visita preordine********\n");
+    printf("\n**************visita preordine***************\n");
     visitaAlberoPreorder(a2);
-    printf("altezza albero = %d",altezzaAlbero(a2));
+    printf("\naltezza albero = %d",altezzaAlbero(a2));
+    printf("\nmassimo elemento dell'albero = %d",get_max(a2));
+    printf("\n---------------------------------------------\n");
+    printf("\n**************visita preordine***************\n");
+    visitaAlberoPreorder(a2);
+    printf("\n");
+    visitaAlberoPreorder(a2);
+    if(uguali(a2,a2)){
+        printf("\nalberi uguali");
+    }else{
+        printf("\nalberi diversi");
+    }
+    printf("\n---------------------------------------------\n");
+    visitaAlberoPreorder(a1);
+    printf("\n");
+    visitaAlberoPreorder(a2);
+    if(uguali(a1,a2)){
+        printf("\nalberi uguali");
+    }else{
+        printf("\nalberi diversi");
+    }
+    printf("\n---------------------------------------------\n");
+    free(a1);
     free(a2);
+    main();
 }

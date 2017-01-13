@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "voto.h"
+#include "main.h"
 
 void inizializzaListaCandidati(candidati *c){
     addcandidato(c,"vincenzo","ebreo","0");
@@ -15,6 +16,9 @@ void inizializzaListaVotanti(voti *v){
 }
 
 void elezioni(){
+    printf("*********************************************\n");
+    printf("**************ELEZIONI BY FALCO**************\n");
+    printf("*********************************************\n");
 
     candidati *listaCandidati = (candidati*)malloc(sizeof(cnode));
     voti *listaVotanti = (voti*)malloc(sizeof(vnode));
@@ -29,5 +33,6 @@ void elezioni(){
     printf("il numero di voti che ha ricevuto aaa e' %d. deve essere 0\n", counter(*listaVotanti, *listaCandidati, "aaa", "aaa"));
     printf("il numero di voti che ha ricevuto vincenzo e' %d. deve essere 0\n", counter(*listaVotanti, *listaCandidati, "vincenzo", "ebreo"));
     printf("il numero di voti che ha ricevuto falcao5 e' %d. deve essere 1\n", counter(*listaVotanti, *listaCandidati, "falcao5", "nonebreo"));
-
+    printf("\n---------------------------------------------\n");
+    main();
 }
