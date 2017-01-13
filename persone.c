@@ -6,9 +6,9 @@
 /**
 Si considerino le elezioni americane per la nomina del presidente degli stati uniti.
 Si vuole gestire un insieme di candidati (non si conosce a priori la dimensione di tale insieme).
-Ogni elemento di questo insieme ï¿½ caratterizzato da un codice alfanumerico, nome e cognome del candidato
-(si considerino tre stringhe). Quindi si vuole gestire lï¿½insieme delle votazioni (non si conosce a priori
-la dimensione di tale insieme). Ogni votazione ï¿½ caratterizzata dal codice del candidato votato,
+Ogni elemento di questo insieme è caratterizzato da un codice alfanumerico, nome e cognome del candidato
+(si considerino tre stringhe). Quindi si vuole gestire l’insieme delle votazioni (non si conosce a priori
+la dimensione di tale insieme). Ogni votazione è caratterizzata dal codice del candidato votato,
 nome e cognome del votante (si considerino tre stringhe).
 
 Es.
