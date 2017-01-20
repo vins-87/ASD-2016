@@ -51,6 +51,13 @@ int altezzaAlbero(nodoAlbero a1){
 /** ALTEZZA ALBERO
 <-----FINE*/
 
+int ricerca(nodoAlbero t, int k){
+    if(t == NULL)
+        return 0;
+    return t->info == k || ricerca(t->dx,k) || ricerca(t->sx, k);
+
+}
+
 /** MAX ELEM ALBERO
 ----->INIZIO*/
 int max3(int a, int b, int c) {
@@ -215,6 +222,9 @@ void alberi(){
         printf("\nalberi diversi");
     }
     printf("\n---------------------------------------------\n");
+    printf("\nAlbero contiene il numero 10? Si, dovrebbe risultare 1. Risulta: %d", ricerca(a1,10));
+    printf("\nAlbero contiene il numero 10? No, dovrebbe risultare 0. Risulta: %d\n", ricerca(a1,0));
+
     free(a1);
     free(a2);
     main();

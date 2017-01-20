@@ -16,6 +16,7 @@ void visitaAlberoInorder(nodoAlbero a1);
 void visitaAlberoPostorder(nodoAlbero a1);
 int maggiore(int n, int m);
 int altezzaAlbero(nodoAlbero a1);
+int ricerca(nodoAlbero t, int k);
 int max3(int a, int b, int c);
 int get_max(nodoAlbero t);
 int uguali(nodoAlbero a1, nodoAlbero a2);
