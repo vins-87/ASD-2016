@@ -16,7 +16,7 @@ int main(){
 
     int sel=0;
     printf("Vins ebreo?\n(-1=esci,0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=EsercitazioneByVins,\n");
-    printf("(7=alberiBinari, 8=alberiBinariParent, 9=alberiNari)\n");
+    printf("(7=alberiBinari, 8=alberiBinariParent, 9=alberiNari, 10=HW4-1, 11=HW4-2, 12=HW-3)\n");
     scanf("%d",&sel);
     switch(sel){
         case -1: break;
@@ -40,6 +40,12 @@ int main(){
         case 8: alberiParent();
                 break;
         case 9: alberiNari();
+                break;
+        case 10:hw4_1();
+                break;
+        case 11:hw4_2();
+                break;
+        case 12:hw4_3();
                 break;
     }
     return 0;
