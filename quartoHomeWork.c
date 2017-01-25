@@ -20,7 +20,7 @@ typedef elem_hw4 *albero_hw4;
 
 /* INIZIO FUNZIONE */
 
-int albero_pieno(albero_hw4 T){
+int albero_pieno_falco(albero_hw4 T){
 
     /* Dato un un albero binario T di interi, la funzione albero_pieno deve ritornare un booleano: 1 se l'albero T è "pieno",
     0 altrimenti. Un albero binario “pieno” è un albero binario in cui tutti i nodi hanno esattamente 0 o 2 figli,
@@ -34,7 +34,7 @@ int albero_pieno(albero_hw4 T){
     if((T->dx == NULL && T->sx != NULL) || (T->dx != NULL && T->sx == NULL))
         return 0;
 
-    return albero_pieno(T->dx) && albero_pieno(T->sx);
+    return albero_pieno_falco(T->dx) && albero_pieno_falco(T->sx);
 
 }
 
@@ -142,7 +142,7 @@ int a(albero_hw4 T, int l){
 
 /* INIZIO FUNZIONE */
 
-int larghezza_albero(albero_hw4 T){
+int larghezza_albero_falco(albero_hw4 T){
 
     /* Dato un un albero binario T di interi, la funzione larghezza_albero deve ritornare la larghezza di T; la larghezza di un albero binario è il numero massimo di nodi che stanno tutti al medesimo livello. Nel caso in cui T sia vuoto la funzione ritornerà 0.*/
 

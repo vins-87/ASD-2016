@@ -52,11 +52,13 @@ int checkEsistenzaLivello(BTree T, int k){
 
 int livello_vero_ricorsivo(BTree T, int livello){
     if(T==NULL)
-        return 0;
-    if(livello==0 && T->valore == 1)    // Se il livello è quello richiesto e il valore è 1, ritorna 1.
+        return 1;
+    if(livello>0 )    // Se il livello è quello richiesto e il valore è 1, ritorna 1.
+        return livello_vero_ricorsivo(T->sx,livello-1) && livello_vero_ricorsivo(T->dx,livello-1); // Scala di un livello e controlla i sottoalberi
+    if(livello == 0 && T->valore == 1)
         return 1;
 
-    return livello_vero_ricorsivo(T->sx,livello-1) && livello_vero_ricorsivo(T->dx,livello-1); // Scala di un livello e controlla i sottoalberi
+    return 0;
 }
 
 /*che dato un albero binario T e un intero h, verifica se tutti i nodi al livello h contengono il booleano 1. Se l’albero T è vuoto oppure non esiste il livello h la
@@ -101,7 +103,6 @@ int conta_booleani(BNTree T){
 
 BTree creaAlbero_settembre_2016(){
     BTree bT=(BTree)malloc(sizeof(nodo_albero_settembre_2016));
-    BTree root = bT;
     bT->valore = 1;
 
     /* ALLOCAZIONE SOTTOALBERO SINISTRO DELLA RADICE*/
@@ -148,13 +149,22 @@ BTree creaAlbero_settembre_2016(){
     bT->dx->sx->dx->sx = NULL;
     bT->dx->sx->dx->dx = NULL;
 
+    bT->dx->sx->sx = NULL;
+
+    bT->dx->dx->sx = NULL;
+
+    bT->dx->dx->dx->sx = NULL;
+
+
     /* LIVELLO 5 */
 
-    bT->dx->dx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->dx->dx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); //
     bT->dx->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
 
     bT->dx->dx->dx->dx->sx = NULL;
     bT->dx->dx->dx->dx->dx = NULL;
+
+    bT->dx->dx->dx->sx->dx = NULL; //
 
     /* LIVELLO 6 */
 
@@ -165,11 +175,12 @@ BTree creaAlbero_settembre_2016(){
     bT->dx->dx->dx->sx->sx->dx = NULL;
 
     bT->dx->dx->dx->sx->dx->sx = NULL;
-    bT->dx->dx->dx->sx->dx->sx = NULL;
+    bT->dx->dx->dx->sx->dx->dx = NULL;
 
     /* VALORI SOTTOALBERO SINISTRO DELLA RADICE*/
 
     bT->sx->valore = 0; // Livello 2
+
 
     bT->sx->sx->valore = 0; // Livello 3
     bT->sx->dx->valore = 0;
@@ -194,7 +205,15 @@ BTree creaAlbero_settembre_2016(){
     bT->dx->dx->dx->sx->dx->valore = 1;
 
 
-    return root;
+    return bT;
+}
+
+void stampaAlbero_settembre_2016(BTree t){
+    if(t){
+        printf("%d , ", t->valore);
+        stampaAlbero_settembre_2016(t->sx);
+        stampaAlbero_settembre_2016(t->dx);
+    }
 }
 
 /*========================= FUNZIONE PRINCIPALE PER TEST =============================*/
@@ -203,16 +222,20 @@ void esame_settembre_2016(){
 
     BTree bT = creaAlbero_settembre_2016();
 
+    printf("%d , ", bT->valore);
+
     printf("\nEsame settembre 2016. Test di merda!!\n");
 
-    //printf("La funzione cammino_vero ritorna %d. Deve ritornare 1\n", cammino_vero(bT));
+    stampaAlbero_settembre_2016(bT);
 
-    //printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
-    //printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
-    //printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
-    //printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
-    //printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
-    //printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
+    printf("\nLa funzione cammino_vero ritorna %d. Deve ritornare 1\n\n", cammino_vero(bT));
+
+    printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
+    printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
+    printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
+    printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
+    printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
+    printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
 
 
 }
