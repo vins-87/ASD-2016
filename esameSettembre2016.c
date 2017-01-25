@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "esameSettembre2016.h"
 /*========================= ESERCIZIO 1 =========================*/
 
@@ -93,4 +94,121 @@ int conta_booleani(BNTree T){
         return 1 + conta_booleani(T->primofiglio) + conta_booleani(T->fratello);
 
     return conta_booleani(T->primofiglio) + conta_booleani(T->fratello);
+}
+
+/*========================= FUNZIONI DI APPOGGIO PER TESTING =========================*/
+
+BTree creaAlbero_settembre_2016(){
+    BTree bT=(BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    BTree root = bT;
+
+    bT->valore = 1;
+
+    /* ALLOCAZIONE SOTTOALBERO SINISTRO DELLA RADICE*/
+
+    /* LIVELLO 2 */
+
+    bT->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    /* LIVELLO 3 */
+
+    bT->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    bT->sx->sx->dx = NULL;
+    bT->sx->sx->sx = NULL;
+
+    /* LIVELLO 4 */
+
+    bT->sx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->sx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->sx->dx->sx->sx = NULL;
+    bT->sx->dx->sx->dx = NULL;
+
+    bT->sx->dx->dx->sx = NULL;
+    bT->sx->dx->dx->dx = NULL;
+
+    /* ALLOCAZIONE SOTTOALBERO DESTRO DELLA RADICE */
+
+    /* LIVELLO 2 */
+
+    bT->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    /* LIVELLO 3 */
+
+    bT->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    /* LIVELLO 4 */
+
+    bT->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    bT->dx->sx->dx->sx = NULL;
+    bT->dx->sx->dx->dx = NULL;
+
+    /* LIVELLO 5 */
+
+    bT->dx->dx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->dx->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->dx->dx->dx->dx->sx = NULL;
+    bT->dx->dx->dx->dx->dx = NULL;
+
+    /* LIVELLO 6 */
+
+    bT->dx->dx->dx->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->dx->dx->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->dx->dx->dx->sx->sx->sx = NULL;
+    bT->dx->dx->dx->sx->sx->dx = NULL;
+
+    bT->dx->dx->dx->sx->dx->sx = NULL;
+    bT->dx->dx->dx->sx->dx->sx = NULL;
+
+    /* VALORI SOTTOALBERO SINISTRO DELLA RADICE*/
+
+    bT->sx->valore = 0; // Livello 2
+
+    bT->sx->sx->valore = 0; // Livello 3
+    bT->sx->dx->valore = 0;
+
+    bT->sx->dx->sx->valore = 0; // Livello 4
+    bT->sx->dx->dx->valore = 0;
+
+    /* VALORI SOTTOALBERO DESTRO DELLA RADICE */
+
+    bT->dx->valore = 1; // Livello 2
+
+    bT->dx->sx->valore = 1; // Livello 3
+    bT->dx->dx->valore = 1;
+
+    bT->dx->sx->dx->valore = 0; // Livello 4
+    bT->dx->dx->dx->valore = 1;
+
+    bT->dx->dx->dx->sx->valore = 1; // Livello 5
+    bT->dx->dx->dx->dx->valore = 1;
+
+    bT->dx->dx->dx->sx->sx->valore = 0; // Livello 6
+    bT->dx->dx->dx->sx->dx->valore = 1;
+
+
+    return root;
+}
+
+/*========================= FUNZIONE PRINCIPALE PER TEST =============================*/
+
+void esame_settembre_2016(){
+
+    BTree bT = creaAlbero_settembre_2016();
+
+    printf("\nLa funzione cammino_vero ritorna %d. Deve ritornare 1\n", cammino_vero(bT));
+
+    printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
+    printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
+    printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
+    printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
+    printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
+    printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
 }

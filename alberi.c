@@ -132,6 +132,7 @@ nodoAlbero arr2albero(int arr[], int dim){
 nodoAlbero creaAlbero(){
     nodoAlbero al=(nodoAlbero)malloc(sizeof(nodoAlbe));
     nodoAlbero root=al;
+
     al->info=50;
     al->sx=(nodoAlbero)malloc(sizeof(nodoAlbe));
     al->sx->info=20;
