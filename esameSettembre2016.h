@@ -30,4 +30,8 @@ int livello_vero(BTree T, int h);
 int check_fratelli_figlio(BNTree T);
 int conta_booleani(BNTree T);
 BTree creaAlbero_settembre_2016();
+void stampaAlbero_settembre_2016(BTree t);
+BNTree creaAlberoN_settembre_2016();
+void stampaAlberoN_settembre_2016(BNTree t);
+
 void esame_settembre_2016();

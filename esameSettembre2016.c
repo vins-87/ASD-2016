@@ -53,7 +53,7 @@ int checkEsistenzaLivello(BTree T, int k){
 int livello_vero_ricorsivo(BTree T, int livello){
     if(T==NULL)
         return 1;
-    if(livello>0 )    // Se il livello è quello richiesto e il valore è 1, ritorna 1.
+    if(livello > 0)    // Se il livello è quello richiesto e il valore è 1, ritorna 1.
         return livello_vero_ricorsivo(T->sx,livello-1) && livello_vero_ricorsivo(T->dx,livello-1); // Scala di un livello e controlla i sottoalberi
     if(livello == 0 && T->valore == 1)
         return 1;
@@ -93,7 +93,7 @@ int conta_booleani(BNTree T){
     if(T==NULL)
         return 0;
 
-    if(check_fratelli_figlio(T))
+    if(check_fratelli_figlio(T->primofiglio))
         return 1 + conta_booleani(T->primofiglio) + conta_booleani(T->fratello);
 
     return conta_booleani(T->primofiglio) + conta_booleani(T->fratello);
@@ -216,26 +216,121 @@ void stampaAlbero_settembre_2016(BTree t){
     }
 }
 
+BNTree creaAlberoN_settembre_2016(){
+    BNTree root = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+
+    /* ALLOCAZIONE ALBERO */
+
+    /* LIVELLO 1 */
+
+    root->fratello = NULL;
+
+    /* LIVELLO 2 */
+
+    root->primofiglio = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->fratello =  (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->fratello->fratello =  NULL;
+
+    /* LIVELLO 3 */
+
+    root->primofiglio->primofiglio = NULL;
+
+    root->primofiglio->fratello->primofiglio = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello->fratello = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello->fratello->fratello = NULL;
+
+    root->primofiglio->fratello->fratello->primofiglio = NULL;
+
+    /* LIVELLO 4 */
+
+    root->primofiglio->fratello->primofiglio->primofiglio = NULL;
+
+    root->primofiglio->fratello->primofiglio->fratello->primofiglio = NULL;
+
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->fratello = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->fratello->fratello = NULL;
+
+
+    /* LIVELLO 5 */
+
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->primofiglio = (BNTree)malloc(sizeof(nodo_alberoN_settembre_2016));
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->primofiglio->fratello = NULL;
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->primofiglio->primofiglio = NULL;
+
+    /* ASSEGNAZIONE VALORI AI NODI */
+
+    /* LIVELLO 1 */
+
+    root->valore = 0;
+
+    /* LIVELLO 2 */
+
+    root->primofiglio->valore = 1;
+    root->primofiglio->fratello->valore = 0;
+    root->primofiglio->fratello->fratello->valore = 1;
+
+    /* LIVELLO 3 */
+
+    root->primofiglio->fratello->primofiglio->valore = 1;
+    root->primofiglio->fratello->primofiglio->fratello->valore = 1;
+    root->primofiglio->fratello->primofiglio->fratello->fratello->valore = 1;
+
+    /* LIVELLO 4 */
+
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->valore = 0;
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->fratello->valore = 0;
+
+    /* LIVELLO 5 */
+
+    root->primofiglio->fratello->primofiglio->fratello->fratello->primofiglio->primofiglio->valore = 1;
+
+    return root;
+}
+
+void stampaAlberoN_settembre_2016(BNTree t){
+    if(t){
+        printf("%d ,", t->valore);
+        stampaAlberoN_settembre_2016(t->primofiglio);
+        stampaAlberoN_settembre_2016(t->fratello);
+    }
+}
+
 /*========================= FUNZIONE PRINCIPALE PER TEST =============================*/
 
 void esame_settembre_2016(){
 
+    printf("\nEsame settembre 2016.\n\n");
+
+    /* ======== TEST SULLE FUNZIONI PER GLI ALBERI BINARI ========*/
+
     BTree bT = creaAlbero_settembre_2016();
 
-    printf("%d , ", bT->valore);
-
-    printf("\nEsame settembre 2016. Test di merda!!\n");
+    printf("\nFunzioni su alberi binari:\n\n");
 
     stampaAlbero_settembre_2016(bT);
 
-    printf("\nLa funzione cammino_vero ritorna %d. Deve ritornare 1\n\n", cammino_vero(bT));
+    printf("\n\nLa funzione cammino_vero ritorna %d. Deve ritornare 1\n\n", cammino_vero(bT));
 
+    printf("La funzione livello_vero(Albero nullo) ritorna %d. Deve ritornare 0\n", livello_vero(NULL,0));
     printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
     printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
     printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
     printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
     printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
     printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
+    printf("La funzione livello_vero(7) ritorna %d. Deve ritornare 0\n", livello_vero(bT,7));
 
+    /* ======== TEST SULLE FUNZIONI PER GLI ALBERI N-ARI ========*/
+
+    BNTree bnT = creaAlberoN_settembre_2016();
+
+    printf("\nFunzioni su alberi n-ari:\n\n");
+
+    stampaAlberoN_settembre_2016(bnT);
+
+    printf("\nLa funzione conta_booleani ritorna %d. Deve ritornare 2\n", conta_booleani(bnT));
 
 }
