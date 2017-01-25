@@ -42,12 +42,12 @@ int main(){
                 break;
         case 9: alberiNari();
                 break;
-//        case 10:hw4_1();
-//                break;
-//        case 11:hw4_2();
-//               break;
-//        case 12:hw4_3();
- //               break;
+        case 10: hw4_1();
+                break;
+        case 11: hw4_2();
+               break;
+        case 12: hw4_3();
+                break;
         case 13: esame_settembre_2016();
                 break;
     }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "esameSettembre2016.h"
+
 /*========================= ESERCIZIO 1 =========================*/
 
 /* che restituisca 1 se esiste in T un cammino radice-foglia in cui tutti  i  nodi  contengono  il  booleano  1.  Se  l’albero  T  è  vuoto  oppure  non  esiste  un  cammino  radice-
@@ -101,7 +102,6 @@ int conta_booleani(BNTree T){
 BTree creaAlbero_settembre_2016(){
     BTree bT=(BTree)malloc(sizeof(nodo_albero_settembre_2016));
     BTree root = bT;
-
     bT->valore = 1;
 
     /* ALLOCAZIONE SOTTOALBERO SINISTRO DELLA RADICE*/
@@ -203,12 +203,16 @@ void esame_settembre_2016(){
 
     BTree bT = creaAlbero_settembre_2016();
 
-    printf("\nLa funzione cammino_vero ritorna %d. Deve ritornare 1\n", cammino_vero(bT));
+    printf("\nEsame settembre 2016. Test di merda!!\n");
 
-    printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
-    printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
-    printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
-    printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
-    printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
-    printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
+    //printf("La funzione cammino_vero ritorna %d. Deve ritornare 1\n", cammino_vero(bT));
+
+    //printf("La funzione livello_vero(1) ritorna %d. Deve ritornare 1\n", livello_vero(bT,1));
+    //printf("La funzione livello_vero(2) ritorna %d. Deve ritornare 0\n", livello_vero(bT,2));
+    //printf("La funzione livello_vero(3) ritorna %d. Deve ritornare 0\n", livello_vero(bT,3));
+    //printf("La funzione livello_vero(4) ritorna %d. Deve ritornare 0\n", livello_vero(bT,4));
+    //printf("La funzione livello_vero(5) ritorna %d. Deve ritornare 1\n", livello_vero(bT,5));
+    //printf("La funzione livello_vero(6) ritorna %d. Deve ritornare 0\n", livello_vero(bT,6));
+
+
 }
