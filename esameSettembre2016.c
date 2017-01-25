@@ -100,34 +100,72 @@ int conta_booleani(BNTree T){
 
 BTree creaAlbero_settembre_2016(){
     BTree bT=(BTree)malloc(sizeof(nodo_albero_settembre_2016));
-    BTree root=bT;
+    BTree root = bT;
+
     bT->valore = 1;
 
     /* ALLOCAZIONE SOTTOALBERO SINISTRO DELLA RADICE*/
 
-    bT->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 2
+    /* LIVELLO 2 */
 
-    bT->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 3
+    bT->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    /* LIVELLO 3 */
+
+    bT->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
     bT->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
 
-    bT->sx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 4
-    bT->sx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->sx->sx->dx = NULL;
+    bT->sx->sx->sx = NULL;
+
+    /* LIVELLO 4 */
+
+    bT->sx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->sx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->sx->dx->sx->sx = NULL;
+    bT->sx->dx->sx->dx = NULL;
+
+    bT->sx->dx->dx->sx = NULL;
+    bT->sx->dx->dx->dx = NULL;
 
     /* ALLOCAZIONE SOTTOALBERO DESTRO DELLA RADICE */
 
-    bT->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 2
+    /* LIVELLO 2 */
 
-    bT->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 3
+    bT->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+
+    /* LIVELLO 3 */
+
+    bT->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
     bT->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
 
-    bT->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 4
+    /* LIVELLO 4 */
+
+    bT->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
     bT->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
 
-    bT->dx->dx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 5
-    bT->dx->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->dx->sx->dx->sx = NULL;
+    bT->dx->sx->dx->dx = NULL;
 
-    bT->dx->dx->dx->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Livello 6
-    bT->dx->dx->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    /* LIVELLO 5 */
+
+    bT->dx->dx->dx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016));
+    bT->dx->dx->dx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->dx->dx->dx->dx->sx = NULL;
+    bT->dx->dx->dx->dx->dx = NULL;
+
+    /* LIVELLO 6 */
+
+    bT->dx->dx->dx->sx->sx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+    bT->dx->dx->dx->sx->dx = (BTree)malloc(sizeof(nodo_albero_settembre_2016)); // Foglia
+
+    bT->dx->dx->dx->sx->sx->sx = NULL;
+    bT->dx->dx->dx->sx->sx->dx = NULL;
+
+    bT->dx->dx->dx->sx->dx->sx = NULL;
+    bT->dx->dx->dx->sx->dx->sx = NULL;
 
     /* VALORI SOTTOALBERO SINISTRO DELLA RADICE*/
 
