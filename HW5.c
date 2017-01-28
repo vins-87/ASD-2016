@@ -24,10 +24,10 @@ typedef nodo_alb *albero;
 
 int* albero_cammino_aux(albero a1, int n, int* vet, int i){
     if(a1){
-        printf("%d ",a1->info);
         vet[i]=a1->info;
         if(a1->sx==NULL && a1->dx==NULL){
             if(a1->info==n){
+                vet[i+1]=0;
                 return vet;
             }
         }else{
@@ -111,10 +111,10 @@ void hw5(){
     printf("*****************HOMEWORK 5******************\n");
     printf("*********************************************\n");
     albero T = creaAlberoHW5();
-    int* vet = albero_cammino(T,60);
+    int* vet = albero_cammino(T,65);
     int i;
     printf("cammino = ");
-    for(i=0;i<10;i++){
+    for(i=0;vet[i]!=0;i++){
         printf("%d ",vet[i]);
     }
     printf("\n---------------------------------------------\n");
