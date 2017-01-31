@@ -4,8 +4,6 @@
 
 /* scrivi qui la definizione del tipo nodo_albero che rappresenta una struttura con tre campi: il primo campo ha nome info ed è di tipo intero, il secondo campo ha nome sx (il puntatore al sottoalbero sinistro), il terzo campo ha nome dx (un puntatore al sottoalbero destro). ATTENZIONE: non invertire l'ordine dei campi della struttura. */
 
-#include "main.h"
-
 /* scrivi qui la definizione del tipo nodo_albero che rappresenta una struttura con tre campi:
 il primo campo ha nome info ed è di tipo intero,
 il secondo campo ha nome sx (il puntatore al sottoalbero sinistro),
