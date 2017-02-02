@@ -18,6 +18,7 @@ int main(){
     int sel=0;
     printf("Vins ebreo?\n(-1=esci,0=array, 1=matrici, 2=stringhe, 3=strutture, 4=liste, 5=elezioni, 6=EsercitazioneByVins,\n");
     printf("(7=alberiBinari, 8=alberiBinariParent, 9=alberiNari, 10=HW4-1, 11=HW4-2, 12=HW-3, 13=esame sett 2016, 14=hw5)\n");
+    printf("(15=esame feb 2016 B)\n");
     scanf("%d",&sel);
     switch(sel){
         case -1: break;
@@ -51,6 +52,8 @@ int main(){
         case 13: esame_settembre_2016();
                 break;
         case 14: hw5();
+                break;
+        case 15: esame_febbraio_2016_B();
                 break;
     }
     return 0;
