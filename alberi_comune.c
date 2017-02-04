@@ -58,9 +58,7 @@ int costruisci_aux(albero T, int l, int* A, int cont, albero root){
 
     if(T){
         if(esiste_nodo_al_livello(root,T->info,l)){
-            printf("\nindice = %d\n",cont);
             A[cont] = T->info;
-            printf("info = %d\n",A[cont]);
             cont=cont+1;
             return cont;
         }
@@ -177,10 +175,10 @@ void esercitazioneDeTuZia(){
     printf("Esiste un nodo al livello %d con info %d. Deve ritornare 0. Ritorna %d\n",3,50,esiste_nodo_al_livello(a,50,3));
     printf("Esiste un nodo al livello %d con info %d. Deve ritornare 1. Ritorna %d\n",4,65,esiste_nodo_al_livello(a,65,4));
 
-    printf("I nodi allo stesso livello della foglia contenente info 15 sono: <");
+    printf("I nodi allo stesso livello della foglia contenente info 15 sono: \n<");
     int *arr=(int*)malloc(4*sizeof(int));
     arr=costruisci_livello_foglia(a,15);
-    printf("%d %d %d %d\n",arr[0],arr[1],arr[2],arr[3]);
+    printf("%d %d %d %d",arr[0],arr[1],arr[2],arr[3]);
     printf(">\n Dovrebbero essere: 15, 40, 70, 85\n");
     /*printf("I nodi allo stesso livello della foglia contenente info %d sono: <", 65);
     arr=costruisci_livello_foglia(a,65);
