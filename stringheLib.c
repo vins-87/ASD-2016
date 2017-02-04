@@ -30,6 +30,6 @@ int confronta(stringa s1, stringa s2){
 void copia(stringa s1, stringa s2){
     int i;
     for(i=0; s1[i]!='\0'; i++)
-        s2[i] = s1[i];
+        *(s2+i) = *(s1+i);
     s2[i]='\0';
 }
