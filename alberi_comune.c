@@ -179,10 +179,10 @@ void esercitazioneDeTuZia(){
     int *arr=(int*)malloc(4*sizeof(int));
     arr=costruisci_livello_foglia(a,15);
     printf("%d %d %d %d",arr[0],arr[1],arr[2],arr[3]);
-    printf(">\n Dovrebbero essere: 15, 40, 70, 85\n");
-    /*printf("I nodi allo stesso livello della foglia contenente info %d sono: <", 65);
+    printf(">\nDovrebbero essere: 15, 40, 70, 85\n");
+    printf("I nodi allo stesso livello della foglia contenente info %d sono: \n<", 65);
     arr=costruisci_livello_foglia(a,65);
-    printf("%d %d %d\n",arr[0],arr[1],arr[2]);
-    printf(">\n Dovrebbero essere: 35, 45, 65\n");
-*/
+    printf("%d %d %d",arr[0],arr[1],arr[2]);
+    printf(">\nDovrebbero essere: 35, 45, 65\n");
+
     }
