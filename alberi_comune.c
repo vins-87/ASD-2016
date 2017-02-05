@@ -52,8 +52,6 @@ int livello_foglia(albero a1, int n){
 /** PROFONDITA' NODO
 <-----FINE*/
 
-
-
 int costruisci_aux(albero T, int l, int* A, int cont, albero root){
 
     if(T){
@@ -97,6 +95,93 @@ int num_nodi_livello(albero T, int l){
         return num_nodi_livello(T->sx,l-1)+num_nodi_livello(T->dx,l-1);
     }
     return 0;
+}
+
+int livello2array_aux(albero T, int l, int* A, int cont, albero root){
+
+    if(T){
+        if(esiste_nodo_al_livello(root,T->info,l)){
+            A[cont] = T->info;
+            cont=cont+1;
+            return cont;
+        }
+        cont=livello2array_aux(T->sx,l,A,cont,root);
+        cont=livello2array_aux(T->dx,l,A,cont,root);
+    }
+    return cont;
+}
+
+int *livello2array(albero T, int lev){
+    if(T){
+        int nnl = num_nodi_livello(T,lev);
+        int *A = (int*)calloc(nnl,sizeof(int));
+        livello2array_aux(T,lev,A,0,T);
+        return A;
+    }
+    return 0;
+}
+
+void riempi(albero root, int* arr, int lev, int* i){
+    if(root){
+        if(lev==0){
+            arr[*i] = root->info;
+            *i = *i + 1;
+        }
+        else{
+            riempi(root->sx,arr,lev-1,i);
+            riempi(root->dx,arr,lev-1,i);
+        }
+    }
+}
+
+void add_elem_array(int* A, int dim, int n){
+    int i;
+    for(i=0;i<dim;i++){
+        if(A[i]==0){
+            A[i]=n;
+            i=dim;
+        }
+    }
+}
+
+void livelli_nodo_comune_aux(albero root, albero T1, albero T2, int** A, int* B, int lev){
+    if(T1){
+        if(A[lev]==NULL){
+            int dim=num_nodi_livello(root,lev);//numero di nodi di un livello
+            int* C=calloc(dim,sizeof(int));
+            B=calloc(dim,sizeof(int));
+            C=livello2array(root,lev);//mette tutti i nodi del livello lev dentro un array
+            int i;
+            int j=0;
+            for(i=0;i<dim;i++){
+                int n=C[i];
+                if(esiste_nodo_al_livello(T2,n,lev)){
+                    B[j]=n;
+                    j++;
+                }
+            }
+            B[j]=-1;
+            A[lev]=B;
+        }
+        livelli_nodo_comune_aux(root,T1->sx,T2,A,B,lev+1);
+        livelli_nodo_comune_aux(root,T1->dx,T2,A,B,lev+1);
+    }
+}
+
+int** livelli_nodo_comune(albero T1, albero T2){
+    if(T1&&T2){
+        int alt=altezza_alberi_comune(T1);
+        printf("altezza = %d\n",alt);
+        int** A=calloc(alt+1,sizeof(int*));
+        int* B=NULL;
+        int i;
+        for(i=0;i<alt+1;i++){
+            A[i]=NULL;
+        }
+        livelli_nodo_comune_aux(T1,T1,T2,A,B,0);
+        return A;
+    }
+    return NULL;
 }
 
 albero creaAlberaccio(){
@@ -185,4 +270,12 @@ void esercitazioneDeTuZia(){
     printf("%d %d %d",arr[0],arr[1],arr[2]);
     printf(">\nDovrebbero essere: 35, 45, 65\n");
 
+    int** arr1=livelli_nodo_comune(a,a);
+    int i,j;
+    for(i=0;arr1[i];i++){
+        for(j=0;arr1[i][j]!=-1;j++){
+            printf("%d ",arr1[i][j]);
+        }
+        printf("\n");
     }
+}
