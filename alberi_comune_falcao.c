@@ -145,12 +145,42 @@ albero creaAlberaccioFalcao(){
     return root;
 }
 
+albero crea_alberetto_falco(){
+    albero a1=(albero)malloc(sizeof(nodo_albero));
+    albero root=a1;
 
+    a1->info=52;
+    a1->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->sx->info=18;
+    a1->dx->info=81;
+    a1->sx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->sx->sx->info=10;
+    a1->sx->sx->sx=NULL;
+    a1->sx->sx->dx=NULL;
+    a1->sx->dx=NULL;
+    a1->dx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->dx->info=90;
+    a1->dx->dx->sx=NULL;
+    a1->dx->dx->dx=NULL;
+    a1->dx->sx->info=61;
+    a1->dx->sx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->sx->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->sx->sx->info=42;
+    a1->dx->sx->sx->sx=NULL;
+    a1->dx->sx->sx->dx=NULL;
+    a1->dx->sx->dx->info=73;
+    a1->dx->sx->dx->sx=NULL;
+    a1->dx->sx->dx->dx=NULL;
+    return root;
+}
 
 void esercitazioneDellaZiaDeFalcao(){
     printf("Esercitazione della zia de falcao\n");
 
     albero a = creaAlberaccioFalcao();
+    albero b = crea_alberetto_falco();
 
     printf("L'altezza dell'albero e' 5. Ritorna %d\n", height(a));
 
@@ -167,7 +197,7 @@ void esercitazioneDellaZiaDeFalcao(){
     }
     printf("\n");
 
-    int** arr1=livelli_nodo_comune_falcao(a,a);
+    int** arr1=livelli_nodo_comune_falcao(a,b);
     int i,j;
     for(i=0; i<height(a) ;i++){
         if(arr1[i]!=NULL)
