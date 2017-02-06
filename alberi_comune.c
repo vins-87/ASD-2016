@@ -121,15 +121,15 @@ int *livello2array(albero T, int lev){
     return 0;
 }
 
-void riempi(albero root, int* arr, int lev, int* i){
-    if(root){
+void riempi(albero T, int* arr, int lev, int* i){
+    if(T){
         if(lev==0){
-            arr[*i] = root->info;
+            arr[*i] = T->info;
             *i = *i + 1;
         }
         else{
-            riempi(root->sx,arr,lev-1,i);
-            riempi(root->dx,arr,lev-1,i);
+            riempi(T->sx,arr,lev-1,i);
+            riempi(T->dx,arr,lev-1,i);
         }
     }
 }
@@ -153,6 +153,8 @@ void livelli_nodo_comune_aux(albero root, albero T1, albero T2, int** A, int* B,
             C=livello2array(root,lev);//mette tutti i nodi del livello lev dentro un array
             int i;
             int j=0;
+            //int x=0;
+            //riempi(root,C,lev,&x);
             for(i=0;i<dim;i++){
                 int n=C[i];
                 if(esiste_nodo_al_livello(T2,n,lev)){
@@ -170,12 +172,14 @@ void livelli_nodo_comune_aux(albero root, albero T1, albero T2, int** A, int* B,
 
 int** livelli_nodo_comune(albero T1, albero T2){
     if(T1&&T2){
-        int alt=altezza_alberi_comune(T1);
-        printf("altezza = %d\n",alt);
-        int** A=calloc(alt+1,sizeof(int*));
+        int altT1=altezza_alberi_comune(T1);
+        int altT2=altezza_alberi_comune(T2);
+        int altMax=magg(altT1,altT2);
+        printf("altezza = %d\n",altMax);
+        int** A=calloc(altMax+1,sizeof(int*));
         int* B=NULL;
         int i;
-        for(i=0;i<alt+1;i++){
+        for(i=0;i<altMax+1;i++){
             A[i]=NULL;
         }
         livelli_nodo_comune_aux(T1,T1,T2,A,B,0);
