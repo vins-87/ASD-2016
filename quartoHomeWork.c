@@ -61,7 +61,7 @@ int verifica_foglie(albero_hw4 T, int l){
     return verifica_foglie(T->sx, l-1)&&verifica_foglie(T->dx,l-1);
 }
 
-int max(int a, int b){
+int max_max(int a, int b){
     if(a>b)
         return a;
     return b;
@@ -72,7 +72,7 @@ int altezza(albero_hw4 T){
         return 0;
     if(T->sx==NULL&&T->dx==NULL)
         return 1;
-    return 1+max(altezza(T->sx),altezza(T->dx));
+    return 1+max_max(altezza(T->sx),altezza(T->dx));
 }
 
 int verifica_nodi(albero_hw4 T, int l){
