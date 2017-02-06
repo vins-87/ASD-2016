@@ -178,10 +178,6 @@ int** livelli_nodo_comune(albero T1, albero T2){
     return NULL;
 }
 
-void livelli_figli_nodo_aux(alberoN T, int x){
-
-}
-
 /*dato un albero binario T1, un albero di grado arbitrario T2, un intero x e un intero h,
 ritornare 1 (true) se tutti i figli del nodo in T2 contenente x sono nodi posizionati al livello h di T1.
 Ritornare 0 (false) altrimenti.*/
