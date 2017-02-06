@@ -247,6 +247,37 @@ albero creaAlberaccio(){
     return root;
 }
 
+albero crea_alberetto(){
+    albero a1=(albero)malloc(sizeof(nodo_albero));
+    albero root=a1;
+
+    a1->info=52;
+    a1->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->sx->info=18;
+    a1->dx->info=81;
+    a1->sx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->sx->sx->info=10;
+    a1->sx->sx->sx=NULL;
+    a1->sx->sx->dx=NULL;
+    a1->sx->dx=NULL;
+    a1->dx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->dx->info=90;
+    a1->dx->dx->sx=NULL;
+    a1->dx->dx->dx=NULL;
+    a1->dx->sx->info=61;
+    a1->dx->sx->sx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->sx->dx=(albero)malloc(sizeof(nodo_albero));
+    a1->dx->sx->sx->info=42;
+    a1->dx->sx->sx->sx=NULL;
+    a1->dx->sx->sx->dx=NULL;
+    a1->dx->sx->dx->info=73;
+    a1->dx->sx->dx->sx=NULL;
+    a1->dx->sx->dx->dx=NULL;
+    return root;
+}
+
 alberoN crea_alberoN(){
     alberoN a1 = (alberoN)malloc(sizeof(nodo_alberoN));
     a1->info = 1;
@@ -319,10 +350,11 @@ void esercitazioneDeTuZia(){
     printf("%d %d %d",arr[0],arr[1],arr[2]);
     printf(">\nDovrebbero essere: 35, 45, 65\n");
 
-    int** arr1=livelli_nodo_comune(a,a);
+    albero a1=crea_alberetto();
+    int** arr1=livelli_nodo_comune(a,a1);
     int i,j;
-    for(i=0;arr1[i];i++){
-        for(j=0;arr1[i][j]!=-1;j++){
+    for(i=0;i<altezza_alberi_comune(a);i++){
+        for(j=0;arr1[i][j]!=-1 && arr1[i];j++){
             printf("%d ",arr1[i][j]);
         }
         printf("\n");
