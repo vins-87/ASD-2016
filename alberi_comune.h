@@ -13,6 +13,14 @@ typedef struct elem_de_tu_zia{
 
 typedef nodo_albero* albero;
 
+typedef struct nodN{
+    int info;
+    struct nodN* figlio;
+    struct nodN* fratello;
+}nodo_alberoN;
+
+typedef nodo_alberoN* alberoN;
+
 int esiste_foglia(albero T, int v);
 
 int altezza(albero T);

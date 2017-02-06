@@ -84,7 +84,7 @@ int altezza_alberi_comune(albero T){
     if(T){
         return 1+magg(altezza_alberi_comune(T->sx),altezza_alberi_comune(T->dx));
     }
-    return -1;
+    return 0;
 }
 
 int num_nodi_livello(albero T, int l){
@@ -134,16 +134,6 @@ void riempi(albero T, int* arr, int lev, int* i){
     }
 }
 
-void add_elem_array(int* A, int dim, int n){
-    int i;
-    for(i=0;i<dim;i++){
-        if(A[i]==0){
-            A[i]=n;
-            i=dim;
-        }
-    }
-}
-
 void livelli_nodo_comune_aux(albero root, albero T1, albero T2, int** A, int* B, int lev){
     if(T1){
         if(A[lev]==NULL){
@@ -179,13 +169,37 @@ int** livelli_nodo_comune(albero T1, albero T2){
         int** A=calloc(altMax+1,sizeof(int*));
         int* B=NULL;
         int i;
-        for(i=0;i<altMax+1;i++){
+        for(i=0;i<altMax;i++){
             A[i]=NULL;
         }
         livelli_nodo_comune_aux(T1,T1,T2,A,B,0);
         return A;
     }
     return NULL;
+}
+
+void livelli_figli_nodo_aux(alberoN T, int x){
+
+}
+
+/*dato un albero binario T1, un albero di grado arbitrario T2, un intero x e un intero h,
+ritornare 1 (true) se tutti i figli del nodo in T2 contenente x sono nodi posizionati al livello h di T1.
+Ritornare 0 (false) altrimenti.*/
+int livelli_figli_nodo(albero T1, alberoN T2, int x, int h){
+    if(T2){
+        if(T2->info==x){
+            T2=T2->figlio;
+            while(T2){
+                if(!esiste_nodo_al_livello(T1,T2->info,h)){
+                    return 0;
+                }
+                T2=T2->fratello;
+            }
+            return 1;
+        }
+        return livelli_figli_nodo(T1,T2->figlio,x,h) || livelli_figli_nodo(T1,T2->fratello,x,h);
+    }
+    return 0;
 }
 
 albero creaAlberaccio(){
@@ -237,6 +251,41 @@ albero creaAlberaccio(){
     return root;
 }
 
+alberoN crea_alberoN(){
+    alberoN a1 = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->info = 1;
+    a1->figlio = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->info = 2;
+    a1->figlio->fratello = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->info = 3;
+    a1->figlio->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->fratello->info = 4;
+    a1->figlio->fratello->fratello->fratello = NULL;
+    a1->figlio->figlio = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->figlio->info = 5;
+    a1->figlio->figlio->figlio = NULL;
+    a1->figlio->figlio->fratello = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->figlio->fratello->info = 6;
+    a1->figlio->figlio->fratello->figlio = NULL;
+    a1->figlio->figlio->fratello->fratello = NULL;
+    a1->figlio->fratello->fratello->figlio = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->fratello->figlio->info = 7;
+    a1->figlio->fratello->fratello->figlio->fratello = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->fratello->figlio->figlio->info = 40;
+    a1->figlio->fratello->fratello->figlio->figlio->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->info = 15;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello = (alberoN)malloc(sizeof(nodo_alberoN));
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->info = 85;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->fratello = NULL;
+    a1->fratello = NULL;
+    return a1;
+}
+
 void esercitazioneDeTuZia(){
     printf("Esercitazione de tu zia\n");
 
@@ -250,7 +299,7 @@ void esercitazioneDeTuZia(){
     printf("Esiste una foglia di info %d? %d. Deve ritornare 0\n",16,esiste_foglia(a,16));
 
 
-    printf("L'altezza dell'albero e' 5. Ritorna %d\n", altezza(a));
+    printf("L'altezza dell'albero e' 5. Ritorna %d\n", altezza_alberi_comune(a));
 
     printf("Il numero di nodi al livello %d e' %d. Ritorna %d\n",0,1,num_nodi_livello(a,0));
     printf("Il numero di nodi al livello %d e' %d. Ritorna %d\n",1,2,num_nodi_livello(a,1));
@@ -282,4 +331,7 @@ void esercitazioneDeTuZia(){
         }
         printf("\n");
     }
+
+    alberoN a2 = crea_alberoN();
+    printf("risultato di livelli_figli_nodo = %d\n",livelli_figli_nodo(a,a2,7,3));
 }
