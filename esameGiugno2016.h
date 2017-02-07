@@ -20,4 +20,4 @@ typedef struct elem2 {
 
 typedef nodo_alberoN* Ntree;
 
-int verificaDiscendenza(BTree T, stringa S1, stringa S2);
+int funzionaCheFunziona(BTree T, stringa S1, stringa S2);
