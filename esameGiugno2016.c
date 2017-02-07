@@ -14,10 +14,12 @@ int verificaDiscendenza_aux(BTree T, stringa S2){
         return strcmp(T->nome,S2) || verificaDiscendenza_aux(T->dx,S2) || verificaDiscendenza_aux(T->sx, S2);
     }
 */
+
     if(T){
-        stampaStringaArray(T->nome);
+        //stampaStringaArray(T->nome);
         printf("\n");
-        if(strcmp(T->nome,S2)){
+        if(strcmp(T->nome,S2)==0){
+            printf("%s = %s\n",T->nome,S2);
             return 1;
         }
         return verificaDiscendenza_aux(T->sx,S2) || verificaDiscendenza_aux(T->dx,S2);
@@ -25,11 +27,29 @@ int verificaDiscendenza_aux(BTree T, stringa S2){
     return 0;
 }
 
+int trova_nodo(BTree a1, stringa n){
+    if(a1){
+        if(strcmp(a1->nome,n)==0){
+            printf("%s = %s\n",a1->nome,n);
+            return 1;
+        }else{
+            if(n<a1->nome){
+                return trova_nodo(a1->sx,n);
+            }else{
+                return trova_nodo(a1->dx,n);
+            }
+        }
+    }
+    return 0;
+}
+
 int verificaDiscendenza(BTree T, stringa S1, stringa S2){
     if(T){
 
-        if(strcmp(T->nome,S1)){
+        if(strcmp(T->nome,S1)==0){
+            printf("%s = %s\n",T->nome,S1);
             return verificaDiscendenza_aux(T,S2);
+            //return trova_nodo(T,S2);
         }
         return verificaDiscendenza(T->sx,S1,S2) || verificaDiscendenza(T->dx,S1,S2);
     }
