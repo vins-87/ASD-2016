@@ -7,6 +7,21 @@ typedef struct elem_de_tu_zia{
     struct elem_de_tu_zia* dx;
 } nodo_albero;
 
+typedef struct elem_de_tu_zia_lista{
+    int info;
+    struct elem_de_tu_zia_lista *next;
+}elem_tu_zia;
+
+typedef struct elem2zia{
+    int info;
+    struct elem2zia* figlio;
+    struct elem2zia* fratello;
+} elem2zia_N;
+
+typedef elem2zia_N* alberoNtuzia;
+
+typedef elem_tu_zia* lista_alberi_comune;
+
 typedef nodo_albero* albero;
 
 int num_nodi_livello_falcao(albero T, int l){
@@ -176,6 +191,202 @@ albero crea_alberetto_falco(){
     return root;
 }
 
+/* ========================== ESERCIZIO livelli_figli_nodo ==========================*/
+
+lista_alberi_comune inserisciInTesta_tuzia(int x, lista_alberi_comune p){
+    lista_alberi_comune temp = (lista_alberi_comune)malloc(sizeof(elem_tu_zia));
+
+    temp->info = x;
+    temp->next = p;
+    p=temp;
+
+    return p;
+}
+
+lista_alberi_comune creaNodoLista_tuzia(int k){
+    lista_alberi_comune result = (lista_alberi_comune)malloc(sizeof(elem_tu_zia));
+
+    result->info = k;
+    result->next = NULL;
+
+    return result;
+}
+
+lista_alberi_comune figliAlberoLivello(albero T,int l, lista_alberi_comune list){
+    if(T==NULL)
+        return list;
+    if(l==0){
+        if(list){
+            list = inserisciInTesta_tuzia(T->info, list);
+        }
+        else{
+            list = creaNodoLista_tuzia(T->info);
+        }
+
+    }
+
+    list = figliAlberoLivello(T->sx,l-1,list);
+    list = figliAlberoLivello(T->dx,l-1,list);
+
+    return list;
+}
+
+int lunghezzaLista(lista_alberi_comune l){
+    int result = 0;
+    while(l){
+        result++;
+        l=l->next;
+    }
+    return result;
+}
+
+int esisteIn(lista_alberi_comune l, int k){
+    while(l){
+        if(l->info==k)
+            return 1;
+        l=l->next;
+    }
+    return 0;
+}
+
+int confrontaListe2zia(lista_alberi_comune l1, lista_alberi_comune l2){
+    if(l1==NULL || l2==NULL)
+        return 0;
+
+    int cont = 0;
+    int lunghList = lunghezzaLista(l2);
+
+    while(l2!=NULL){
+        if(esisteIn(l1,l2->info))
+            cont++;
+        l2 = l2->next;
+    }
+
+    return cont >= lunghList;
+}
+
+lista_alberi_comune inserisciFigliInLista(alberoNtuzia T, lista_alberi_comune l){
+    if(T==NULL)
+        return l;
+
+    while(T->fratello!=NULL){
+        if(l)
+            l = inserisciInTesta_tuzia(T->info,l);
+        else
+            l = creaNodoLista_tuzia(T->info);
+
+        T = T->fratello;
+    }
+
+    l = inserisciInTesta_tuzia(T->info,l);
+
+    return l;
+}
+
+lista_alberi_comune figliAlberoInfo(alberoNtuzia T, int x, lista_alberi_comune l){
+    if(T==NULL)
+        return l;
+
+    if(T->info==x)
+        l = inserisciFigliInLista(T->figlio,l);
+
+
+    l=figliAlberoInfo(T->fratello,x,l);
+    l=figliAlberoInfo(T->figlio,x,l);
+
+    return l;
+}
+
+/*
+ dato un albero binario T1, un albero di grado arbitrario T2, un intero x e un intero h, ritornare 1 (true)
+ se tutti i figli del nodo in T2 contenente x sono nodi posizionati al livello h di T1.
+ Ritornare 0 (false) altrimenti.
+*/
+
+void stampaListatuzia(lista_alberi_comune p){
+    if(p){
+        printf("%d ",p->info);
+        stampaListatuzia(p->next);
+    }
+}
+
+int livelli_figli_nodo_falcao(albero T1, alberoNtuzia T2, int x, int h){
+    if(T1==NULL || T2==NULL)
+        return 0;
+
+    lista_alberi_comune l1 = NULL;
+    l1 = figliAlberoLivello(T1,h,l1);
+
+    lista_alberi_comune l2 = NULL;
+    l2 = figliAlberoInfo(T2,x,l2);
+
+    printf("lista l1: ");
+    stampaListatuzia(l1);
+    printf("\nlista l2: ");
+
+    stampaListatuzia(l2);
+    printf("\n");
+
+    return confrontaListe2zia(l1,l2);
+}
+
+alberoNtuzia crea_alberoN_tuzia(){
+    alberoNtuzia a1 = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->info = 1;
+    a1->figlio = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->info = 2;
+    a1->figlio->fratello = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->info = 3;
+    a1->figlio->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->fratello->info = 4;
+    a1->figlio->fratello->fratello->fratello = NULL;
+    a1->figlio->figlio = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->figlio->info = 5;
+    a1->figlio->figlio->figlio = NULL;
+    a1->figlio->figlio->fratello = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->figlio->fratello->info = 6;
+    a1->figlio->figlio->fratello->figlio = NULL;
+    a1->figlio->figlio->fratello->fratello = NULL;
+    a1->figlio->fratello->fratello->figlio = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->fratello->figlio->info = 7;
+    a1->figlio->fratello->fratello->figlio->fratello = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->fratello->figlio->figlio->info = 40;
+    a1->figlio->fratello->fratello->figlio->figlio->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->info = 15;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello = (alberoNtuzia)malloc(sizeof(elem2zia_N));
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->info = 85;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->figlio = NULL;
+    a1->figlio->fratello->fratello->figlio->figlio->fratello->fratello->fratello = NULL;
+    a1->fratello = NULL;
+    return a1;
+}
+
+int verificaDiscendenza_falcao(albero T, int a){
+    if(T==NULL)
+        return 0;
+
+    if(T->info==a)
+        return 1;
+
+    return verificaDiscendenza_falcao(T->sx,a) || verificaDiscendenza_falcao(T->dx,a);
+}
+
+int funzionaCheFunziona_falcao(albero T, int a, int b){
+    if(T==NULL)
+        return 0;
+
+    if(T->info==a)
+        if(T->sx!=NULL || T->dx!=NULL)
+            return verificaDiscendenza_falcao(T->sx,b) || verificaDiscendenza_falcao(T->dx,b);
+
+    return funzionaCheFunziona_falcao(T->sx,a,b) || funzionaCheFunziona_falcao(T->dx,a,b);
+
+}
+
 void esercitazioneDellaZiaDeFalcao(){
     printf("Esercitazione della zia de falcao\n");
 
@@ -206,4 +417,11 @@ void esercitazioneDellaZiaDeFalcao(){
             }
         printf("\n");
     }
+
+    alberoNtuzia c = crea_alberoN_tuzia();
+    printf("risultato di livelli_figli_nodo = %d\n",livelli_figli_nodo_falcao(a,c,7,3));
+
+    albero t = creaAlberaccioFalcao();
+    printf("da 20 discende 35 = %d",funzionaCheFunziona_falcao(t,50,35));
+    printf("da 35 non discende 15 = %d",funzionaCheFunziona_falcao(t,35,15));
 }
