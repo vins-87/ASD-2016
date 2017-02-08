@@ -111,16 +111,6 @@ int livello2array_aux(albero T, int l, int* A, int cont, albero root){
     return cont;
 }
 
-int *livello2array(albero T, int lev){
-    if(T){
-        int nnl = num_nodi_livello(T,lev);
-        int *A = (int*)calloc(nnl,sizeof(int));
-        livello2array_aux(T,lev,A,0,T);
-        return A;
-    }
-    return 0;
-}
-
 void riempi(albero T, int* arr, int lev, int* i){
     if(T){
         if(lev==0){
@@ -134,26 +124,38 @@ void riempi(albero T, int* arr, int lev, int* i){
     }
 }
 
+int *livello2array(albero T, int lev){
+    if(T){
+        int nnl = num_nodi_livello(T,lev);
+        int *A = (int*)calloc(nnl,sizeof(int));
+        //livello2array_aux(T,lev,A,0,T);
+        int c=0;
+        riempi(T,A,lev,&c);
+        return A;
+    }
+    return 0;
+}
+
 void livelli_nodo_comune_aux(albero root, albero T1, albero T2, int** A, int* B, int lev){
     if(T1){
         if(A[lev]==NULL){
             int dim=num_nodi_livello(root,lev);//numero di nodi di un livello
-            int* C=calloc(dim,sizeof(int));
             B=calloc(dim,sizeof(int));
-            C=livello2array(root,lev);//mette tutti i nodi del livello lev dentro un array
+            B=livello2array(root,lev);//mette tutti i nodi del livello lev dentro un array
             int i;
-            int j=0;
-            //int x=0;
+            int x=0;
             //riempi(root,C,lev,&x);
             for(i=0;i<dim;i++){
-                int n=C[i];
+                int n=B[i];
                 if(esiste_nodo_al_livello(T2,n,lev)){
-                    B[j]=n;
-                    j++;
+                    i=dim;
+                    x=1;
                 }
             }
-            B[j]=-1;
-            A[lev]=B;
+            if(x){
+                B[dim]=-1;
+                A[lev]=B;
+            }
         }
         livelli_nodo_comune_aux(root,T1->sx,T2,A,B,lev+1);
         livelli_nodo_comune_aux(root,T1->dx,T2,A,B,lev+1);
@@ -166,7 +168,7 @@ int** livelli_nodo_comune(albero T1, albero T2){
         int altT2=altezza_alberi_comune(T2);
         int altMax=magg(altT1,altT2);
         printf("altezza = %d\n",altMax);
-        int** A=calloc(altMax+1,sizeof(int*));
+        int** A=calloc(altMax,sizeof(int*));
         int* B=NULL;
         int i;
         for(i=0;i<altMax;i++){
@@ -354,7 +356,7 @@ void esercitazioneDeTuZia(){
     int** arr1=livelli_nodo_comune(a,a1);
     int i,j;
     for(i=0;i<altezza_alberi_comune(a);i++){
-        for(j=0;arr1[i][j]!=-1 && arr1[i];j++){
+        for(j=0;arr1[i] && arr1[i][j]!=-1;j++){
             printf("%d ",arr1[i][j]);
         }
         printf("\n");

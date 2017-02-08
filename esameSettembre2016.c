@@ -329,8 +329,8 @@ void esame_settembre_2016(){
 
     printf("\nFunzioni su alberi n-ari:\n\n");
 
-    stampaAlberoN_settembre_2016(bnT);
+    //stampaAlberoN_settembre_2016(bnT);
 
-    printf("\nLa funzione conta_booleani ritorna %d. Deve ritornare 2\n", conta_booleani(bnT));
+    //printf("\nLa funzione conta_booleani ritorna %d. Deve ritornare 2\n", conta_booleani(bnT));
 
 }

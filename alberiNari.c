@@ -12,7 +12,7 @@ void visitaAlberoNarioPreorder(nodoAlberoNario a1){
             visitaAlberoNarioPreorder(temp);
             temp=temp->fratello;
         }
-    }return;
+    }
 }
 
 void visitaAlberoNarioPreorderOld(nodoAlberoNario a1){
@@ -143,6 +143,38 @@ int verificaNodiPariConSoliFigliDispari(nodoAlberoNario a1){
         rit=verificaNodiPariConSoliFigliDispari(a1->figlio)&&verificaNodiPariConSoliFigliDispari(a1->fratello);
     }
     return rit;
+}
+
+int cammino_alberoNario(nodoAlberoNario T, int n, int* A, int *j){
+    if(T){
+        if(T->info==n && T->figlio==NULL){
+            A[*j]=T->info;
+            return 1;
+        }
+        if(cammino_alberoNario(T->figlio,n,A,j) || cammino_alberoNario(T->fratello,n,A,j)){
+            *j=*j+1;
+            A[*j]=T->info;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void livello2array_alberoNario(nodoAlberoNario T, int* arr, int lev, int* n){
+    nodoAlberoNario temp;
+    if(T!=NULL){
+        if(lev==0){
+            temp=T;
+            while(temp!=NULL){
+                arr[*n] = T->info;
+                *n = *n + 1;
+                temp=temp->fratello;
+            }
+            return;
+        }
+        livello2array_alberoNario(T->figlio,arr,lev-1,n);
+        livello2array_alberoNario(T->fratello,arr,lev,n);
+    }
 }
 
 void stampaAlberoNarioGrafico(nodoAlberoNario a1){
@@ -280,6 +312,30 @@ void alberiNari(){
     }else{
         printf("non tutti i nodi pari hanno solo figli dispari\n");
     }
+
+    printf("---------------------------------------------\n");
+    printf("cammino dell'albero con nodo %d\n",9);
+    int i;
+    int *A=(int*)malloc(sizeof(int));
+    int j=0;
+    cammino_alberoNario(a1,9,A,&j);
+    A[j+1]=-1;
+    for(i=0;A[i]!=-1;i++){
+        if(A[i])
+            printf("%d ",A[i]);
+    }
+    printf("\n");
+    free(A);
+    int* B=(int*)malloc(sizeof(int));
+    int m=0;
+    livello2array_alberoNario(a1,B,2,&m);
+    B[m+1]=-1;
+    for(i=0;B[i]!=-1;i++){
+        if(B[i])
+            printf("%d ",B[i]);
+    }
+    printf("\n");
+    free(B);
     free(a1);
     //free(a2);
     printf("---------------------------------------------\n");
