@@ -283,7 +283,7 @@ void alberiNari(){
     printf("**************visita postordine**************\n");
     visitaAlberoNarioPostorder(a1);
     printf("\n---------------------------------------------\n");
-    /*printf("numero di foglie = %d\n",contaFoglieAlberoNario(a1));
+    printf("numero di foglie = %d\n",contaFoglieAlberoNario(a1));
     printf("---------------------------------------------\n");
     printf("max elemento dell'albero n-ario = %d\n",maxElemAlberoNario(a1));
     printf("---------------------------------------------\n");
@@ -326,11 +326,10 @@ void alberiNari(){
             printf("%d ",A[i]);
     }
     printf("\n");
-    free(A);*/
+    free(A);
     int* B=(int*)malloc(20*sizeof(int));
     int m=0;
     int z;
-    //int livello=3;
     livello2array_alberoNario(a1,B,2,&m);
     B[m]=-1;
     for(z=0;B[z]!=-1;z++){
