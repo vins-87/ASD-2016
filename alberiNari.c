@@ -145,6 +145,64 @@ int verificaNodiPariConSoliFigliDispari(nodoAlberoNario a1){
     return rit;
 }
 
+/* ========= FUNZIONE CHE RESTITUISCE UN ARRAY DI TUTTE LE INFO APPARTENENTI AL LIVELLO l ============ */
+/*
+int *mergeArrays(int *A, int *B){
+	int lunghezzaA = lunghezza(A);									//
+	int lunghezzaB = lunghezza(B);									//
+	int *result = (int*)malloc((lunghezzaA+lunghezzaB)*sizeof(int));	// Allocato un array di dimensione pari alla somma delle dimensioni
+	int i,j;
+
+	for(i=0; i<lunghezzaA; i++)
+		result[i] = A[i];											// Salva gli elementi di A in result
+
+	i = lunghezzaA;													// i è uguale a lunghezzaA-1
+
+	for(j=0; j<lunghezzaB; j++){
+		result[i] = B[j];
+		i++;
+	}
+
+	return result;
+}
+*/
+
+int nodiAlLivelloNario(nodoAlberoNario T,int l){
+    if(T==NULL)
+        return 0;
+
+    if(l==0)
+        return 1 + nodiAlLivelloNario(T->fratello,l);
+
+    return nodiAlLivelloNario(T->figlio,l-1) + nodiAlLivelloNario(T->fratello,l);
+}
+
+void funzioneCheFunziona(nodoAlberoNario T, int *A, int *cont, int l){
+	if(T){
+		if(l==0){
+            A[*cont] = T->info;
+            *cont = *cont+1;
+			funzioneCheFunziona(T->fratello,A,cont,l);
+			return;
+		}
+
+		funzioneCheFunziona(T->figlio,A,cont,l-1);
+		funzioneCheFunziona(T->fratello,A,cont,l);
+        return;
+	}
+	return;
+}
+
+int *livello2array(nodoAlberoNario T, int l){
+    int *result = (int*)malloc(nodiAlLivelloNario(T,l)*sizeof(int));
+    int *k = (int*)malloc(sizeof(int));
+    *k=0;
+    funzioneCheFunziona(T,result,k,l);
+    return result;
+}
+
+/* ======== FINE FUNZIONE CHE RESTITUISCE UN ARRAY DI TUTTE LE INFO APPARTENENTI AL LIVELLO l ======== */
+
 void stampaAlberoNarioGrafico(nodoAlberoNario a1){
     nodoAlberoNario a2=a1;
     printf("              %d",a1->info);
@@ -280,8 +338,23 @@ void alberiNari(){
     }else{
         printf("non tutti i nodi pari hanno solo figli dispari\n");
     }
+
+    printf("Nodi al livello 0,1,2,3: \n");
+    printf("1 = %d\n",nodiAlLivelloNario(a1,0));
+    printf("3 = %d\n",nodiAlLivelloNario(a1,1));
+    printf("3 = %d\n",nodiAlLivelloNario(a1,2));
+    printf("2 = %d\n",nodiAlLivelloNario(a1,3));
+
+    int *arr1 = livello2array(a1, 1);
+    int i;
+    for(i=0; i<nodiAlLivelloNario(a1,1); i++)
+        printf("%d, ",arr1[i]);
+
+
+
     free(a1);
     //free(a2);
-    printf("---------------------------------------------\n");
+    printf("\n---------------------------------------------\n");
+
     main();
 }

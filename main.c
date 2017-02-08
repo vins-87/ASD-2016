@@ -21,8 +21,8 @@ int main(){
     printf("(15=esame feb 2016 B)\n");
     scanf("%d",&sel);
     switch(sel){
-        case -1: break;
-
+        case -1: return 0;
+                break;
         case 0: vet();
                 break;
         case 1: matrice();
@@ -56,5 +56,5 @@ int main(){
         case 15: esame_febbraio_2016_B();
                 break;
     }
-    return 0;
+    return main();
 }
