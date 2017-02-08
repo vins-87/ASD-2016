@@ -163,17 +163,18 @@ int cammino_alberoNario(nodoAlberoNario T, int n, int* A, int *j){
 void livello2array_alberoNario(nodoAlberoNario T, int* arr, int lev, int* n){
     nodoAlberoNario temp;
     if(T!=NULL){
+            printf("livello = %d\n",lev);
         if(lev==0){
             temp=T;
-            while(temp!=NULL){
-                arr[*n] = T->info;
-                *n = *n + 1;
-                temp=temp->fratello;
-            }
-            return;
+            arr[*n] = T->info;
+            *n = *n + 1;
+            temp=temp->fratello;
+            livello2array_alberoNario(temp,arr,lev,n);
+        }else{
+            livello2array_alberoNario(T->figlio,arr,lev-1,n);
+            livello2array_alberoNario(T->fratello,arr,lev,n);
         }
-        livello2array_alberoNario(T->figlio,arr,lev-1,n);
-        livello2array_alberoNario(T->fratello,arr,lev,n);
+
     }
 }
 
@@ -282,7 +283,7 @@ void alberiNari(){
     printf("**************visita postordine**************\n");
     visitaAlberoNarioPostorder(a1);
     printf("\n---------------------------------------------\n");
-    printf("numero di foglie = %d\n",contaFoglieAlberoNario(a1));
+    /*printf("numero di foglie = %d\n",contaFoglieAlberoNario(a1));
     printf("---------------------------------------------\n");
     printf("max elemento dell'albero n-ario = %d\n",maxElemAlberoNario(a1));
     printf("---------------------------------------------\n");
@@ -325,14 +326,16 @@ void alberiNari(){
             printf("%d ",A[i]);
     }
     printf("\n");
-    free(A);
-    int* B=(int*)malloc(sizeof(int));
+    free(A);*/
+    int* B=(int*)malloc(20*sizeof(int));
     int m=0;
+    int z;
+    //int livello=3;
     livello2array_alberoNario(a1,B,2,&m);
-    B[m+1]=-1;
-    for(i=0;B[i]!=-1;i++){
-        if(B[i])
-            printf("%d ",B[i]);
+    B[m]=-1;
+    for(z=0;B[z]!=-1;z++){
+        if(B[z]!=-1)
+            printf("%d ",B[z]);
     }
     printf("\n");
     free(B);
