@@ -31,10 +31,11 @@ int* albero_cammino_aux(albero a1, int n, int* vet, int i){
                 return vet;
             }
         }else{
+            i++;
             if(n<a1->info){
-                vet = albero_cammino_aux(a1->sx,n,vet,++i);
+                vet = albero_cammino_aux(a1->sx,n,vet,i);
             }else{
-                vet = albero_cammino_aux(a1->dx,n,vet,++i);
+                vet = albero_cammino_aux(a1->dx,n,vet,i);
             }
         }
     }
