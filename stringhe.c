@@ -320,9 +320,9 @@ stringa creaStringa(){
 
 stringa* creaArrayDiStringhe(){
     stringa s1=(stringa)calloc(50,sizeof(char));
-    strcpy(s1,"stoca");
+    strcpy(s1,"hello");
     stringa s2=(stringa)calloc(50,sizeof(char));
-    strcpy(s2,"cazzo");
+    strcpy(s2,"world");
     stringa *v=(stringa*)calloc(2,sizeof(stringa));
     v[0]=s1;
     v[1]=s2;

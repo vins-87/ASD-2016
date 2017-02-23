@@ -24,11 +24,11 @@ int main(){
     switch(sel){
         case -1: break;
 
-        case 0: vet();
+        case 0: vet();                      // Già rifattorizzato
                 break;
-        case 1: matrice();
+        case 1: matrice();                  // Già rifattorizzato
                 break;
-        case 2: stringhe();
+        case 2: stringhe();                 // Non ci sono parolacce, da commentare
                 break;
         case 3: strutture();
                 break;
