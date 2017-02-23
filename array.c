@@ -161,16 +161,10 @@ void vet(){
     printf("********************ARRAY********************\n");
     printf("*********************************************\n");
 
-    /* 0 */
-
     vettore v=creaArray(M);
     printf("\nmassimo elemento dell'array = %d\n",maxElemArray(v,M));
 
-    /* 1 */
-
     pariDispari(v,M);
-
-    /* 2 */
 
     sort(v);
     printf("\nArray ordinato:\n");
