@@ -146,7 +146,6 @@ int potenzaRicorsiva(int num, int pot){
     return num;
 }
 
-//CREA ARRAY DA INPUT E RITORNA IL PUNTATORE AD ESSA
 vettore creaArray(int dim){
     vettore v=calloc(M,sizeof(int));
     int i;
@@ -161,13 +160,24 @@ void vet(){
     printf("*********************************************\n");
     printf("********************ARRAY********************\n");
     printf("*********************************************\n");
+
+    /* 0 */
+
     vettore v=creaArray(M);
     printf("\nmassimo elemento dell'array = %d\n",maxElemArray(v,M));
+
+    /* 1 */
+
     pariDispari(v,M);
+
+    /* 2 */
+
     sort(v);
     printf("\nArray ordinato:\n");
+
     stampaArray(v,10);
     printf("---------------------------------------------\n");
+
     int w[27]={1,9,1,2,1,8,2,4,6,2,7,9,4,5,8,6,3,4,7,5,3,9,6,8,3,5,7};
     int n=(sizeof(w)/sizeof(w[0]));
     stampaArray(w,n);
