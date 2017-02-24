@@ -34,20 +34,16 @@ int num_nodi_livello_falcao(albero T, int l){
     return 0;
 }
 
-int costruisci_livello_nodo_aux(albero T,int *array, int l, int cont){
+void costruisci_livello_nodo_aux(albero T,int *array, int l, int *cont){
     if(T==NULL)
-        return cont;
+        return;
 
     if(l==0){
-        *(array+cont) = T->info;
-        cont = cont+1;
-        return cont;
+        array[*cont] = T->info;
+        *cont = *cont+1;
     }
-
-    cont = costruisci_livello_nodo_aux(T->sx, array, l-1, cont);
-    cont = costruisci_livello_nodo_aux(T->dx, array, l-1, cont);
-
-    return cont;
+    costruisci_livello_nodo_aux(T->sx, array, l-1, cont);
+    costruisci_livello_nodo_aux(T->dx, array, l-1, cont);
 }
 
 int *costruisci_livello_nodo(albero T, int l){
@@ -56,9 +52,10 @@ int *costruisci_livello_nodo(albero T, int l){
 
     int *result;
     int nodiAlLivello = num_nodi_livello_falcao(T, l);           // Calcolo il numero di nodi al livello i
-    result = (int*)malloc(nodiAlLivello*sizeof(int));            // E mallocco un array di dimensione adeguata
-
-    costruisci_livello_nodo_aux(T,result,l,0);
+    result = (int*)malloc(nodiAlLivello*sizeof(int));           // E mallocco un array di dimensione adeguata
+    int *c = (int*)malloc(sizeof(int));
+    *c=0;
+    costruisci_livello_nodo_aux(T,result,l,c);
 
     return result;
 }
