@@ -28,39 +28,39 @@ int main(){
                 break;
         case 1: matrice();                  // Già rifattorizzato
                 break;
-        case 2: stringhe();                 // Non ci sono parolacce, da commentare
+        case 2: stringhe();                 // Già rifattorizzato
                 break;
-        case 3: strutture();
+        case 3: strutture();                // TODO
                 break;
-        case 4: liste();
+        case 4: liste();                    // TODO
                 break;
-        case 5: elezioni();
+        case 5: elezioni();                 // TODO
                 break;
-        case 6: elezioniByVins();
+        case 6: elezioniByVins();           // TODO
                 break;
-        case 7: alberi();
+        case 7: alberi();                  // TODO
                 break;
-        case 8: alberiParent();
+        case 8: alberiParent();             // TODO
                 break;
-        case 9: alberiNari();
+        case 9: alberiNari();                // TODO
                 break;
-        case 10: hw4_1();
+        case 10: hw4_1();                // TODO
                 break;
-        case 11: hw4_2();
+        case 11: hw4_2();                // TODO
                break;
-        case 12: hw4_3();
+        case 12: hw4_3();                // TODO
                 break;
-        case 13: esame_settembre_2016();
+        case 13: esame_settembre_2016();                // TODO
                 break;
-        case 14: hw5();
+        case 14: hw5();                // TODO
                 break;
-        case 15: esame_febbraio_2016_B();
+        case 15: esame_febbraio_2016_B();                // TODO
                 break;
-        case 16: esercitazioneDeTuZia();
+        case 16: esercitazioneDeTuZia();                // TODO
                 break;
-        case 17: esercitazioneDellaZiaDeFalcao();
+        case 17: esercitazioneDellaZiaDeFalcao();                // TODO
                 break;
-        case 18: esame_giugno2016();
+        case 18: esame_giugno2016();                // TODO
                 break;
     }
     return 0;
